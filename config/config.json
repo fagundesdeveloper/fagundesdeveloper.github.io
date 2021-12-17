@@ -1,0 +1,17 @@
+{
+  "CONTRACT_ADDRESS": "0x2da45De82A1f606CA43FB0f73681739Da365d687",
+  "SCAN_LINK": "https://etherscan.io/address/0x2da45de82a1f606ca43fb0f73681739da365d687",
+  "NETWORK": {
+    "NAME": "Ethereum",
+    "SYMBOL": "ETH",
+    "ID": 1
+  },
+  "NFT_NAME": "SOURCE – Behold The Ocean Collectibles",
+  "SYMBOL": "BTOCL",
+  "MAX_SUPPLY": 4444,
+  "WEI_COST": 70000000000000000,
+  "DISPLAY_COST": 0.07,
+  "GAS_LIMIT": 285000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/sourcebeholdtheocean"
+}
