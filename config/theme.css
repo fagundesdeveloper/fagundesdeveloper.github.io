@@ -1,8 +1,10 @@
 :root {
-  --primary: #ebc908;
-  --primary-text: #ffffff;
-  --secondary: #ff3000;
-  --secondary-text: #ffffff;
-  --accent: #060606;
-  --accent-text: #ffffff;
+  --primary: #cf027e;
+  --primary-text: #fff;
+  --secondary: #cf027e;
+  --secondary-text: #fff;
+  --accent: #fff;
+  --accent-text: #fff;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@700&display=swap');

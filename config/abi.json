@@ -127,25 +127,6 @@
 				"type": "address"
 			}
 		],
-		"name": "WhiteListClaimed",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
 		"name": "addressMintedBalance",
 		"outputs": [
 			{
@@ -209,12 +190,12 @@
 	},
 	{
 		"inputs": [],
-		"name": "cost",
+		"name": "baseURI",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "",
-				"type": "uint256"
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -222,12 +203,12 @@
 	},
 	{
 		"inputs": [],
-		"name": "dynamicCost",
+		"name": "cost",
 		"outputs": [
 			{
-				"internalType": "bool",
+				"internalType": "uint256",
 				"name": "",
-				"type": "bool"
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -316,19 +297,6 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "merkleRoot",
-		"outputs": [
-			{
-				"internalType": "bytes32",
-				"name": "",
-				"type": "bytes32"
 			}
 		],
 		"stateMutability": "view",
@@ -582,12 +550,25 @@
 	{
 		"inputs": [
 			{
-				"internalType": "bytes32",
-				"name": "merkleRootValue",
-				"type": "bytes32"
+				"internalType": "uint256",
+				"name": "_newCost",
+				"type": "uint256"
 			}
 		],
-		"name": "setMerkleRoot",
+		"name": "setCost",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_limit",
+				"type": "uint256"
+			}
+		],
+		"name": "setNftPerAddressLimit",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -791,6 +772,19 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "_users",
+				"type": "address[]"
+			}
+		],
+		"name": "whitelistUsers",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

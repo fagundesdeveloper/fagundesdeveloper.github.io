@@ -1,18 +1,18 @@
 {
-  "CONTRACT_ADDRESS": "0xC19fA518Fe0e061F6f67972EDa9fDD86efecEE29",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xC19fA518Fe0e061F6f67972EDa9fDD86efecEE29",
+  "CONTRACT_ADDRESS": "0x4D305Cbd5795AC84BE10Ac27374F8d41aecb314A",
+  "SCAN_LINK": "https://etherscan.io/address/0x4d305cbd5795ac84be10ac27374f8d41aecb314a",
   "NETWORK": {
-    "NAME": "Rinkeby",
+    "NAME": "Ethereum",
     "SYMBOL": "ETH",
-    "ID": 4
+    "ID": 1
   },
-  "NFT_NAME": "Waifu",
-  "SYMBOL": "WHC",
-  "MAX_SUPPLY": 50,
-  "WEI_COST": 1000000000000000,
-  "DISPLAY_COST": 0.001,
+  "NFT_NAME": "The Divine Ring",
+  "SYMBOL": "TDR",
+  "MAX_SUPPLY": 908,
+  "WEI_COST": 80000000000000000,
+  "DISPLAY_COST": 0.08,
   "GAS_LIMIT": 300000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://opensea.io/collection",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/",
   "SHOW_BACKGROUND": true
 }
