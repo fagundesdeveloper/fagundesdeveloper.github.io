@@ -1,6 +1,6 @@
 {
-  "short_name": "TDR",
-  "name": "The Divine Rings",
+  "short_name": "WHC",
+  "name": "Waifu",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,7 +9,7 @@
     },
     {
       "src": "logo192.png",
-      "type": "image/png",
+      "type": "image/pgn",
       "sizes": "192x192"
     },
     {
