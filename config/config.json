@@ -1,0 +1,18 @@
+{
+  "CONTRACT_ADDRESS": "0x73d1495C8beB2B6415BAF25d0f7E0875420D28ec",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x73d1495C8beB2B6415BAF25d0f7E0875420D28ec",
+  "NETWORK": {
+    "NAME": "Rinkeby",
+    "SYMBOL": "ETH",
+    "ID": 4
+  },
+  "NFT_NAME": "Waifu",
+  "SYMBOL": "WHC",
+  "MAX_SUPPLY": 10000,
+  "WEI_COST": 40000000000000000,
+  "DISPLAY_COST": 0.04,
+  "GAS_LIMIT": 310000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://opensea.io/collection",
+  "SHOW_BACKGROUND": true
+}
