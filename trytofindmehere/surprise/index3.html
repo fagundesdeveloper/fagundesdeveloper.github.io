@@ -8,30 +8,54 @@
 </head>
 
 <body>
-    <video autoplay muted id="myVideo" class="video-container">
+    
+    <video id="myVideo" class="video-container">
         <source src="img/Yuuki.mp4" type="video/mp4">
     </video>
+    
       
       <!-- Optional: some overlay text to describe the video -->
+    
     <div class="content" id="social">
-    <h1>Find out More...</h1>
     <!-- Use a button to pause/play the video with JavaScript -->
         <a href="#" > <i class="fa-brands fa-facebook"></i> </a>
         <a href="#" > <i class="fa-brands fa-twitter"></i> </a>
         <a href="#"> <i class="fa-brands fa-discord"></i> </a>
 
-    </div>
+        
 
+    </div>
+    <section>
+        <button id="myBtn" onclick="myFunction()">PLAY</button>
+</section>
     <script>
         // Get the video
         var video = document.getElementById("myVideo");
         var social = document.getElementById("social");
+        var btn = document.getElementById("myBtn");
+
+        video.currentTime = 31;
+
+        function myFunction() {
+        if (video.paused) {
+            video.currentTime = 0;
+            video.play();
+            social.style.display = "none"
+            btn.innerHTML = "SKIP";
+        } else {
+            video.pause();
+            video.currentTime = 31;
+            social.style.display = "block"
+            btn.innerHTML = "PLAY";
+        }
+        }
 
        
         video.addEventListener("timeupdate", function(){
             console.log(this.currentTime);
             if(this.currentTime >= 31) {
                 this.pause();
+                btn.innerHTML = "PLAY";
                 social.style.display = "block"
             }
         });
