@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Falling Leaves Animation in CSS3 | Pure CSS | No JavaScript</title>
+	<link href="styleV.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <video autoplay muted id="myVideo" class="video-container">
+        <source src="img/Yuuki.mp4" type="video/mp4">
+    </video>
+      
+      <!-- Optional: some overlay text to describe the video -->
+    <div class="content" id="social">
+    <h1>Find out More...</h1>
+    <!-- Use a button to pause/play the video with JavaScript -->
+        <a href="#" > <i class="fa-brands fa-facebook"></i> </a>
+        <a href="#" > <i class="fa-brands fa-twitter"></i> </a>
+        <a href="#"> <i class="fa-brands fa-discord"></i> </a>
+
+    </div>
+
+    <script>
+        // Get the video
+        var video = document.getElementById("myVideo");
+        var social = document.getElementById("social");
+
+       
+        video.addEventListener("timeupdate", function(){
+            console.log(this.currentTime);
+            if(this.currentTime >= 31) {
+                this.pause();
+                social.style.display = "block"
+            }
+        });
+        </script>
+</body>
+
+</html>
+
+
