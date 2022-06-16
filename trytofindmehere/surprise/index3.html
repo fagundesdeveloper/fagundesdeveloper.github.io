@@ -27,14 +27,28 @@
     </div>
     <section>
         <button id="myBtn" onclick="myFunction()">PLAY</button>
-</section>
+        <button id="myBtnMute" onclick="myFunctionMute()">🔊</button>
+    </section>
     <script>
         // Get the video
         var video = document.getElementById("myVideo");
         var social = document.getElementById("social");
         var btn = document.getElementById("myBtn");
+        var btnMute = document.getElementById("myBtnMute");
 
         video.currentTime = 31;
+
+        function myFunctionMute() {
+            if(video.muted){
+                video.muted = false;
+                btnMute.innerHTML = "🔊"
+            }else{
+                video.muted = true;
+                btnMute.innerHTML = "🔇"
+                
+            }
+            
+        }
 
         function myFunction() {
         if (video.paused) {

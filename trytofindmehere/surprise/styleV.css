@@ -84,6 +84,25 @@ section {
     color: black;
   }
 
+    
+  /* Style the button used to pause/play the video */
+  #myBtnMute {
+  
+    font-size: 28px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  
+  #myBtnMute:hover {
+    background: #ddd;
+    color: black;
+  }
+
   .fa {
     padding: 20px;
     font-size: 30px;
