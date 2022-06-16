@@ -35,8 +35,10 @@
         var social = document.getElementById("social");
         var btn = document.getElementById("myBtn");
         var btnMute = document.getElementById("myBtnMute");
-
-        
+        myVideo.load();
+        video.play();
+        myVideo.pause(); 
+        video.currentTime = 31;
 
         function myFunctionMute() {
             if(video.muted){
