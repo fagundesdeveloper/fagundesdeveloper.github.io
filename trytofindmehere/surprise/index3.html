@@ -36,7 +36,7 @@
         var btn = document.getElementById("myBtn");
         var btnMute = document.getElementById("myBtnMute");
 
-        video.currentTime = 31;
+        
 
         function myFunctionMute() {
             if(video.muted){
@@ -64,9 +64,13 @@
         }
         }
 
+        window.addEventListener('load', function () {
+            video.currentTime = 31;
+        })
        
         video.addEventListener("timeupdate", function(){
             console.log(this.currentTime);
+            btn.innerHTML = this.currentTime;
             if(this.currentTime >= 31) {
                 this.pause();
                 btn.innerHTML = "PLAY";
