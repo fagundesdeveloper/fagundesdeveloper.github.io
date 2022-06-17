@@ -160,6 +160,19 @@ section {
     .fa-instagram {
       font-size: 50px!important;
     }
+    .myBtn {
+      background: red!important;
+      font-size: 30px!important;
+      padding: 10px!important;
+      border-radius: 12px!important;
+    }
+    
+    /* Style the button used to pause/play the video */
+    .myBtnMute {
+      background: red!important;
+      font-size: 40px!important;
+      border-radius: 50%!important;
+    }
   }
 
 
