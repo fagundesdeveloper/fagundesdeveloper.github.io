@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
-	<title>Falling Leaves Animation in CSS3 | Pure CSS | No JavaScript</title>
+	<title>Yuuki Universe</title>
 	<link href="styleV.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -36,7 +36,7 @@
         myVideo.load();
         video.play();
         myVideo.pause(); 
-        video.currentTime = 31;
+        video.currentTime = 32;
 
         function myFunctionMute() {
             if(video.muted){
@@ -58,18 +58,18 @@
             btn.innerHTML = "SKIP";
         } else {
             video.pause();
-            video.currentTime = 31;
+            video.currentTime = 32;
             social.style.display = "block"
             btn.innerHTML = "PLAY";
         }
         }
 
         window.addEventListener('load', function () {
-            video.currentTime = 31;
+            video.currentTime = 32;
         })
        
         video.addEventListener("timeupdate", function(){
-            if(this.currentTime >= 31) {
+            if(this.currentTime >= 32) {
                 this.pause();
                 btn.innerHTML = "PLAY";
                 social.style.display = "block"
