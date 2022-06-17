@@ -169,7 +169,7 @@ section {
     
     /* Style the button used to pause/play the video */
     .myBtnMute {
-      padding-left: 3px!important;
+      padding: 3px!important;
       font-size: 35px!important;
       border-radius: 50%!important;
     }
