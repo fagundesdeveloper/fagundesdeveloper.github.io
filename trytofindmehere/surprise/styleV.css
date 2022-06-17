@@ -146,26 +146,18 @@ section {
   
   @media screen and (max-width: 600px) {
     .fa-facebook {
-
-      
       font-size: 50px!important;
     }
     
     /* Twitter */
     .fa-twitter {
-    
-      
       font-size: 50px!important;
     }
   
     .fa-discord {
-  
-      
       font-size: 50px!important;
     }
     .fa-instagram {
-  
-      
       font-size: 50px!important;
     }
   }
