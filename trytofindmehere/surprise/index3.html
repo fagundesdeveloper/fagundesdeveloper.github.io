@@ -21,9 +21,7 @@
         <a href="#" > <i class="fa-brands fa-facebook"></i> </a>
         <a href="#" > <i class="fa-brands fa-twitter"></i> </a>
         <a href="#"> <i class="fa-brands fa-discord"></i> </a>
-
-        
-
+        <a href="#"> <i class="fa-brands fa-instagram"></i> </a>
     </div>
     <section>
         <button id="myBtn" onclick="myFunction()">PLAY</button>
@@ -71,8 +69,6 @@
         })
        
         video.addEventListener("timeupdate", function(){
-            console.log(this.currentTime);
-            btn.innerHTML = this.currentTime;
             if(this.currentTime >= 31) {
                 this.pause();
                 btn.innerHTML = "PLAY";

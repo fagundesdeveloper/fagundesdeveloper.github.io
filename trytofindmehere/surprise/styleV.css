@@ -137,6 +137,13 @@ section {
     color: white;
     font-size: 100px!important;
   }
+  .fa-instagram {
+
+    color: white;
+    font-size: 100px!important;
+  }
+
+  
   @media screen and (max-width: 600px) {
     .fa-facebook {
 
@@ -152,6 +159,11 @@ section {
     }
   
     .fa-discord {
+  
+      
+      font-size: 50px!important;
+    }
+    .fa-instagram {
   
       
       font-size: 50px!important;
