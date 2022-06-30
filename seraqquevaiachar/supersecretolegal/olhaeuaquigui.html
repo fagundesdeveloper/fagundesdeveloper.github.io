@@ -626,7 +626,7 @@
 	}
 
 	function exitHandler(){
-		if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement)
+		if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement && !document.exitFullScreen)
 		{
 		// Run code on exit
 		onskipVideo();
