@@ -598,7 +598,6 @@ h6 { font-size: 16px; }
 .grax_tm_hero .container{height: 100%;}
 .grax_tm_hero .details{
 	position: absolute;
-	width: 100%;
 	text-align: center;
 	top: 50%;
 	transform: translateY(-50%);
