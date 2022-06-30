@@ -37,7 +37,7 @@ body{
 	letter-spacing: 1px;
 	word-wrap: break-word;
 	font-weight: 400;
-	background-color: #141312;
+	background-color: #110F12;
 	color: #767676;
 }
 svg{
@@ -122,7 +122,6 @@ img.svg{
   /* Facebook */
   .fa-facebook {
     font-size: 40px!important;
-	color: red
 	
   }
   .fa-youtube {
@@ -221,7 +220,7 @@ h6 { font-size: 16px; }
     width: 50%;
     height: 100%;
     z-index: -1;
-    background-color: #141312;
+    background-color: #110F12;
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
@@ -2458,6 +2457,35 @@ body.dark .grax_tm_settings .cursor li .svg,
 		width: 95px;
 	
 	}
+	.fa-facebook {
+		font-size: 30px!important;
+		
+	  }
+	  .fa-youtube {
+		font-size: 30px!important;
+		
+	  }
+	  .fa-tiktok {
+		font-size: 30px!important;
+		
+	  }
+	  
+	  /* Twitter */
+	  .fa-twitter {
+		font-size: 30px!important;
+		
+		
+	  }
+	
+	  .fa-discord {
+		font-size: 30px!important;
+		
+	  }
+	  .fa-instagram {
+		font-size: 30px!important;
+		
+		
+	  }
 }
 @media (max-width: 480px) {
 	.grax_tm_hero .name{font-size: 30px;}
@@ -2470,4 +2498,33 @@ body.dark .grax_tm_settings .cursor li .svg,
 		width: 80px;
 	
 	}
+	.fa-facebook {
+		font-size: 20px!important;
+		
+	  }
+	  .fa-youtube {
+		font-size: 20px!important;
+		
+	  }
+	  .fa-tiktok {
+		font-size: 20px!important;
+		
+	  }
+	  
+	  /* Twitter */
+	  .fa-twitter {
+		font-size: 20px!important;
+		
+		
+	  }
+	
+	  .fa-discord {
+		font-size: 20px!important;
+		
+	  }
+	  .fa-instagram {
+		font-size: 20px!important;
+		
+		
+	  }
 }
