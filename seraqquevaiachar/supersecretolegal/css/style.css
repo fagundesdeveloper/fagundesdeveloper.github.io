@@ -599,6 +599,7 @@ h6 { font-size: 16px; }
 .grax_tm_hero .details{
 	position: absolute;
 	text-align: center;
+	left:0px;
 	top: 50%;
 	transform: translateY(-50%);
 	z-index: 5;
@@ -2425,6 +2426,14 @@ body.dark .grax_tm_settings .cursor li .svg,
 
 }
 @media (max-width: 768px) {
+	.grax_tm_topbar {
+		width: 100%;
+    	left: 0;
+    	right: 0;
+	}
+	.grax_tm_topbar .topbar_inner{
+		justify-content: center;
+	}
 	.grax_tm_title_holder h3{letter-spacing: 5px;}
 	.grax_tm_hero .name{font-size: 45px;margin-bottom: 5px;}
 	.grax_tm_hero .job{font-size: 17px;}
@@ -2487,6 +2496,14 @@ body.dark .grax_tm_settings .cursor li .svg,
 	  }
 }
 @media (max-width: 480px) {
+	.grax_tm_topbar {
+		width: 100%;
+    	left: 0;
+    	right: 0;
+	}
+	.grax_tm_topbar .topbar_inner{
+		justify-content: center;
+	}
 	.grax_tm_hero .name{font-size: 30px;}
 	.grax_tm_hero .job{font-size: 15px;}
 	.grax_tm_portfolio ul{margin: 0px;}
