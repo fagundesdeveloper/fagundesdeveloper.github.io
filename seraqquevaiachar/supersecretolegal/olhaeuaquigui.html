@@ -635,7 +635,7 @@
 	
 
 	function onskipVideo(){
-		video.style.display = "none";
+		
 
 		if (video.mozCancelFullScreen) {
 			video.mozCancelFullScreen();
@@ -647,13 +647,18 @@
 			video.msExitFullScreen();
 		}
 
-		
+		video.style.display = "none";
 		skipBtn.style.display = "none";
 		btnMute.style.display = "none";
 		home.style.display = "block";
 		navibar.style.display = "block";	
 		video.pause();
 
+		setTimeout(function (){
+			alert("teste")
+  // Something you want delayed.
+            
+		}, 5000);
 		
 
 		
