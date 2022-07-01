@@ -364,7 +364,13 @@ function grax_tm_preloader(){
 		}, 2000);
 
 	} else {
-		preloader.remove();
+		setTimeout(function() {
+			preloader.addClass('preloaded');
+		}, 800);
+		setTimeout(function() {
+			preloader.remove();
+		}, 2000);
+		// preloader.remove();
 	}
 }
 
