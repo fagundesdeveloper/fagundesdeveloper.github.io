@@ -155,6 +155,7 @@ img.svg{
 }
 
 .img_disco{
+	cursor: pointer;
 	width: 150px;
 	margin-top: 40px;
 }

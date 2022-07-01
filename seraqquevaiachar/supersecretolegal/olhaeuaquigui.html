@@ -635,6 +635,7 @@
 	
 
 	function onskipVideo(){
+		video.style.display = "none";
 
 		if (video.mozCancelFullScreen) {
 			video.mozCancelFullScreen();
@@ -646,7 +647,7 @@
 			video.msExitFullScreen();
 		}
 
-		video.style.display = "none";
+		
 		skipBtn.style.display = "none";
 		btnMute.style.display = "none";
 		home.style.display = "block";
