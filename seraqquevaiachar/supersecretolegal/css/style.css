@@ -343,7 +343,7 @@ h6 { font-size: 16px; }
 	transform: translateY(0);
 }
 .grax_tm_topbar.animate{
-	background-color: #fff;
+	/* background-color: #fff; */
 	padding: 25px 0px;
 	box-shadow: 0px 0px 10px rgba(0,0,0,.1);
 }
@@ -399,7 +399,7 @@ h6 { font-size: 16px; }
 	height: auto;
 	float: left;
 	clear: both;
-	background-color: #fff;
+	/* background-color: #fff; */
 	padding: 20px 0px;
 	border-bottom: 1px solid rgba(0,0,0,.2);
 }
