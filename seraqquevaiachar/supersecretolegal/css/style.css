@@ -378,7 +378,7 @@ h6 { font-size: 16px; }
 	transition: all .3s ease;
 }
 .grax_tm_topbar .menu ul li.current a{color: #e54b4b;}
-.grax_tm_topbar .menu ul li a:hover{color: #e54b4b;}
+.grax_tm_topbar .menu ul li a:hover{color: #d6ae55;}
 .grax_tm_topbar.animate .menu ul li a{color: #000;}
 
 /*---------------------------------------------------*/
