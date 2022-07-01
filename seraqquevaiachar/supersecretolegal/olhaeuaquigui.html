@@ -646,12 +646,18 @@
 		} else if (video.msExitFullScreen) {
 			video.msExitFullScreen();
 		}
+		setTimeout(function (){
+			video.style.display = "none";
+			skipBtn.style.display = "none";
+			btnMute.style.display = "none";
+			home.style.display = "block";
+			navibar.style.display = "block";
+  // Something you want delayed.
+            
+		}, 3000);
 
-		video.style.display = "none";
-		skipBtn.style.display = "none";
-		btnMute.style.display = "none";
-		home.style.display = "block";
-		navibar.style.display = "block";	
+		
+
 		video.pause();
 
 		setTimeout(function (){
