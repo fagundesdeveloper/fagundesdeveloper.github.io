@@ -646,26 +646,21 @@
 		} else if (video.msExitFullScreen) {
 			video.msExitFullScreen();
 		}
-		setTimeout(function (){
-			video.style.display = "none";
-			skipBtn.style.display = "none";
-			btnMute.style.display = "none";
-			home.style.display = "block";
-			navibar.style.display = "block";
-  // Something you want delayed.
-            
-		}, 3000);
 
-		
+		video.style.display = "none";
+		skipBtn.style.display = "none";
+		btnMute.style.display = "none";
+		video.style.opacity = 0;
+		skipBtn.style.opacity = 0;
+		btnMute.style.opacity = 0;
+
+		home.style.display = "block";
+		navibar.style.display = "block";
+		home.style.opacity = 1;
+		navibar.style.opacity = 1;
 
 		video.pause();
 
-		setTimeout(function (){
-			alert("teste")
-  // Something you want delayed.
-            
-		}, 5000);
-		
 
 		
 	}
@@ -675,9 +670,14 @@
 		video.style.display = "block";
 		skipBtn.style.display = "block";
 		btnMute.style.display = "block";
+		video.style.opacity = 1;
+		skipBtn.style.opacity = 1;
+		btnMute.style.opacity = 1;
 
 		home.style.display = "none";
 		navibar.style.display = "none";
+		home.style.opacity = 0;
+		navibar.style.opacity = 0;
 
 		video.currentTime = 0;
 		video.play();	
