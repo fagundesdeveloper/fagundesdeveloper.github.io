@@ -303,7 +303,7 @@ function grax_tm_hero_title_fade(){
 	var mySpan	= jQuery('.fn_animation .character');
 	var a 		= 0;
 	var speed 	= 30;
-	var wait	= 500;
+	var wait	= 0;
 	mySpan.each(function(i){
 		var element = jQuery(this);
 		setTimeout(function(){element.addClass('opened');},i*speed);
@@ -324,8 +324,8 @@ function grax_tm_my_load(){
 	"use strict";
 	
 	grax_tm_my_waypoint();
-	setTimeout(function(){grax_tm_preloader();},1000);
-	setTimeout(function(){grax_tm_hero_title_fade();},3000);
+	setTimeout(function(){grax_tm_preloader();},500);
+	setTimeout(function(){grax_tm_hero_title_fade();},1000);
 }
 
 // -----------------------------------------------------
@@ -376,19 +376,19 @@ function grax_tm_nav_bg(){
 	
 	"use strict";
 
-	jQuery(window).on('scroll',function(){
-		var progress	 	= jQuery('.progressbar');
-		var topbar	 		= jQuery('.grax_tm_topbar');
-		var WinOffset		= jQuery(window).scrollTop();
+	// jQuery(window).on('scroll',function(){
+	// 	var progress	 	= jQuery('.progressbar');
+	// 	var topbar	 		= jQuery('.grax_tm_topbar');
+	// 	var WinOffset		= jQuery(window).scrollTop();
 
-		if(WinOffset >= 100){
-			topbar.addClass('animate');
-			progress.addClass('animate');
-		}else{
-			topbar.removeClass('animate');
-			progress.removeClass('animate');
-		}
-	});
+	// 	if(WinOffset >= 100){
+	// 		topbar.addClass('animate');
+	// 		progress.addClass('animate');
+	// 	}else{
+	// 		topbar.removeClass('animate');
+	// 		progress.removeClass('animate');
+	// 	}
+	// });
 }
 
 // -------------------------------------------------
