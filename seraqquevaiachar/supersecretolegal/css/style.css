@@ -37,7 +37,7 @@ body{
 	letter-spacing: 1px;
 	word-wrap: break-word;
 	font-weight: 400;
-	background-color: #110F12;
+	background-color: #050506;
 	color: #767676;
 }
 svg{
@@ -106,7 +106,7 @@ img.svg{
     padding: 20px;
     font-size: 40px!important;
     width: 50px;
-	color: #d6ae55;
+	color: #e5e5e5;
 	padding-right: 40px;
     text-align: center;
     text-decoration: none;
@@ -221,7 +221,7 @@ h6 { font-size: 16px; }
     width: 50%;
     height: 100%;
     z-index: -1;
-    background-color: #110F12;
+    background-color: #050506;
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
@@ -372,12 +372,12 @@ h6 { font-size: 16px; }
 .grax_tm_topbar .menu ul li:last-child{margin-right: 0px;}
 .grax_tm_topbar .menu ul li a{
 	text-decoration: none;
-	color: #bebebe;
+	color: #e5e5e5;
 	font-family: "Poppins";
 	font-weight: 500;
 	transition: all .3s ease;
 }
-.grax_tm_topbar .menu ul li.current a{color: #e54b4b;}
+.grax_tm_topbar .menu ul li.current a{color: #d6ae55;}
 .grax_tm_topbar .menu ul li a:hover{color: #d6ae55;}
 .grax_tm_topbar.animate .menu ul li a{color: #000;}
 
