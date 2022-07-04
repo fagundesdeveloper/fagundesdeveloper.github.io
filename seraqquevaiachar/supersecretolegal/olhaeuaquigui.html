@@ -600,6 +600,25 @@
 	var skipBtn = document.getElementById('skipBtn');
 	var btnMute = document.getElementById("myBtnMute");
 
+
+	video.addEventListener("webkitendfullscreen", function(){
+		videoExitedFullscreen(video);
+	}, false);
+
+	function videoExitedFullscreen(videoElement){
+
+//check if an element is currently full screen
+		if(document.fullScreenElement || document.webkitIsFullScreen == true || document.mozFullScreen || document.msFullscreenElement ){
+
+			//do whatever here if the video is now (just became) full screen
+
+		} else {
+			console.log('fullscreen was closed');
+			onskipVideo();
+			//do whatever you want on fullscreen close, like pause or mute
+		}
+	}
+
 	function myFunctionMute() {
 		if(video.muted){
 			video.muted = false;
