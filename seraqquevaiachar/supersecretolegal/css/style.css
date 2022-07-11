@@ -150,13 +150,13 @@ img.svg{
 	
   }
 .img_logo{
-	width: 65%;
+	width: 45%;
 	margin-bottom: 300px;
 }
 
 .img_disco{
 	cursor: pointer;
-	width: 150px;
+	width: 120px;
 	margin-top: 40px;
 }
 
@@ -587,7 +587,7 @@ h6 { font-size: 16px; }
 	left: 0px;
 	right: 0px;
 	z-index: 1;
-	background-color: rgba(0,0,0,.2);
+	background-color: rgba(0,0,0,.8);
 }
 .grax_tm_hero .content{
 	width: 100%;
@@ -604,6 +604,7 @@ h6 { font-size: 16px; }
 	top: 50%;
 	transform: translateY(-50%);
 	z-index: 5;
+	margin-top: -150px;
 }
 .grax_tm_hero .name{
 	font-size: 72px;
@@ -2424,8 +2425,19 @@ body.dark .grax_tm_settings .cursor li .svg,
 	.grax_tm_portfolio ul li{padding-left: 20px;margin-bottom: 20px;}
 	.grax_tm_news .news_list ul{margin-left: -30px;}
 	.grax_tm_news .news_list ul li{padding-left: 30px;margin-bottom: 30px;}
+	.grax_tm_hero .details{
+		margin-top: -200px;
+	}
 
 }
+@media (max-width: 900px) {
+	.grax_tm_hero .details{
+		margin-top: -200px;
+	}
+}
+
+
+
 @media (max-width: 768px) {
 	.grax_tm_topbar {
 		width: 100%;
@@ -2495,6 +2507,9 @@ body.dark .grax_tm_settings .cursor li .svg,
 		
 		
 	  }
+	  .grax_tm_hero .details{
+		margin-top: -210px;
+	}
 }
 @media (max-width: 480px) {
 	.grax_tm_topbar {
@@ -2544,4 +2559,11 @@ body.dark .grax_tm_settings .cursor li .svg,
 		
 		
 	  }
+	  .grax_tm_hero .details{
+		margin-top: -160px;
+	}
+	.img_disco{
+
+		margin-top: 10px;
+	}
 }
