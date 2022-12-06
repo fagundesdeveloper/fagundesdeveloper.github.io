@@ -1,7 +1,9 @@
 <krpano>
 	<!--
 		webvr.xml
-		- krpano 1.20
+		- krpano 1.20.11
+		
+		https://krpano.com/plugins/webvr/
 	-->
 
 	<!-- load the WebVR plugin and assign it to a global 'webvr' variable -->
@@ -23,6 +25,7 @@
 	        onvrcontrollers="webvr_onvrcontrollers();"
 	        onentervr="webvr_onentervr();"
 	        onexitvr="webvr_onexitvr();"
+	        ondenied="webvr_ondenied();"
 	        />
 
 
@@ -58,8 +61,10 @@
 		<!-- optional: vibrate the controllers on hovering:
 		vr_ctrl_l.addevent('onover', pulse(1.0, 0.25) );
 		vr_ctrl_r.addevent('onover', pulse(1.0, 0.25) ); -->
-		vr_ctrl_l.addevent('onvrcontrollerbutton', 'if(vrbuttonindex == 3 AND vrbuttonstate == "up", vrsetup_open(); );' );
-		vr_ctrl_r.addevent('onvrcontrollerbutton', 'if(vrbuttonindex == 3 AND vrbuttonstate == "up", vrsetup_open(); );' );
+		if(!global.webvr.iswebxr,
+			vr_ctrl_l.addevent('onvrcontrollerbutton', 'if(vrbuttonindex == 3 AND vrbuttonstate == "up", vrsetup_open(); );' );
+			vr_ctrl_r.addevent('onvrcontrollerbutton', 'if(vrbuttonindex == 3 AND vrbuttonstate == "up", vrsetup_open(); );' );
+		);
 		
 		set(global.webvr.vr_controller, 'vr_controller_l,vr_controller_r');
 		set(global.have_vr_controllers, true);
@@ -238,6 +243,20 @@
 
 		webvr_restore_layers();
 	</action>
+	
+	
+	<action name="webvr_ondenied" scope="local">
+		addlayer(webvr_ondenied_info);
+		layer[webvr_ondenied_info].loadstyle(webvr_button_style);
+		set(layer[webvr_ondenied_info],
+			align='center',
+			html='Entering VR mode was denied!',
+			onclick='set(enabled,false); tween(alpha,0,0.5,default,removelayer(get(name)));'
+		);
+		delayedcall(2.0,
+			callwith(layer[webvr_ondenied_info], onclick(); );
+		);
+	</action>
 
 
 	<action name="webvr_hide_all_non_vr_layers" scope="local">
@@ -298,7 +317,7 @@
 	<layer name="webvr_enterbutton" keep="true" vr="true"
 	       style="webvr_button_style"
 	       html="Enter VR"
-	       align="top" y="-224"
+	       align="top" y="24"
 	       autoalpha="true" alpha="0.0"
 	       onclick="webvr.enterVR();"
 	       />
@@ -643,13 +662,9 @@
 				if (change < 0) { p = Math.max(0.2, Number(p) - 0.1); webvr.oversampling = p;  } else 
 				if (change > 0) { p = Math.min(4.0, Number(p) + 0.1); webvr.oversampling = p;  }
 				
-				krpano.actions.delayedcall(0, function()
+				krpano.actions.delayedcall(0.3, function()
 				{
-					var gl = krpano.webGL.context;
-					var gl_width  = gl.drawingBufferWidth  | 0;
-					var gl_height = gl.drawingBufferHeight | 0;
-					
-					renderres.html = gl_width + "x" + gl_height;
+					renderres.html = webvr.renderwidth + "x" + webvr.renderheight;
 				});
 				
 				return p.toFixed(1);
@@ -883,6 +898,41 @@
 		}
 		
 	]]></action>
+	
 
+	<!-- A list of devices and their screensize -->
+	<mobilevr_device_database>
+		<device name="iPhone 5/5S/SE" screen="320x568x2" size="4.0" bevel="3" />
+		<device name="iPhone 6/6S/7/8" screen="375x667x2" size="4.7" />
+		<device name="iPhone 6/6S/7/8 Plus" screen="414x736" size="5.5" />
+		<device name="iPhone 6/6S/7/8 Plus (zoomed)" screen="375x667x3" size="5.5" />
+		<device name="iPhone X/XS/11Pro" screen="375x812x3" size="5.85|5.33" />
+		<device name="iPhone XS/11Pro Max" screen="414x896x3" size="6.46|5.95" />
+		<device name="iPhone XR/11" screen="414x896x2" size="6.06|5.58" />
+		<device name="iPhone 12/12Pro" screen="390x844" size="6.1" />
+		<device name="iPhone 12Pro Max" screen="428x926" size="6.7" />
+		<device name="Samsung S6" ua="sm-g930" size="5.1" />
+		<device name="Samsung S6 Edge" ua="sm-g925" size="5.1" />
+		<device name="Samsung S6 Edge Plus" ua="sm-g928" size="5.7" />
+		<device name="Samsung S7" ua="sm-g930" size="5.1" />
+		<device name="Samsung S7 Edge" ua="sm-g935" size="5.5" />
+		<device name="Samsung S8" ua="sm-g950" size="5.8" />
+		<device name="Samsung S8+" ua="sm-g955" size="6.2" />
+		<device name="Samsung S9" ua="sm-g960" size="5.8" />
+		<device name="Samsung S9+" ua="sm-g965" size="6.2" />
+		<device name="Samsung S10e" ua="sm-g970" size="5.8" />
+		<device name="Samsung S10" ua="sm-g973" size="6.1" />
+		<device name="Samsung S10+" ua="sm-g975" size="6.4" />
+		<device name="Samsung S10 5G" ua="sm-g977" size="6.7" />
+		<device name="Samsung Note 7" ua="sm-n930" size="5.7" />
+		<device name="Samsung Note 8" ua="sm-n950" size="6.3" />
+		<device name="Samsung Note 9" ua="sm-n960" size="6.4" />
+		<device name="Samsung Note 10" ua="sm-n970" size="6.3" />
+		<device name="Samsung Note 10 5G" ua="sm-n971" size="6.3" />
+		<device name="Samsung Note 10+" ua="sm-n975" size="6.8" />
+		<device name="Samsung Note 10+ 5G" ua="sm-n976" size="6.8" />
+		<device name="Huawei P10 Lite" ua="HUAWEIWAS-TL10" size="5.2" />
+		<device name="Huawei P20 Lite" ua="HUAWEIANE-LX1" size="5.84" />
+	</mobilevr_device_database>
 
 </krpano>
