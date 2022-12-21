@@ -1,0 +1,18 @@
+{
+  "CONTRACT_ADDRESS": "0xE4855d0D56a07B9952645000E2E5B66FaD5d9E15",
+  "SCAN_LINK": "https://etherscan.io/address/0xE4855d0D56a07B9952645000E2E5B66FaD5d9E15",
+  "NETWORK": {
+    "NAME": "Goerli",
+    "SYMBOL": "ETH",
+    "ID": 5
+  },
+  "NFT_NAME": "MyLand Metaverse Genesis",
+  "SYMBOL": "unit",
+  "MAX_SUPPLY": 3654,
+  "WEI_COST": 1,
+  "DISPLAY_COST": 0.05,
+  "GAS_LIMIT": 285000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/",
+  "SHOW_BACKGROUND": true
+}
