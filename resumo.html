@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Executivo - Diagnóstico PDV</title>
+  <style>
+    :root {
+      --primary-color: #1a237e;
+      --secondary-color: #283593;
+      --accent-color: #c62828;
+      --success-color: #2e7d32;
+      --bg-color: #f0f2f5;
+      --card-bg: #ffffff;
+      --text-main: #2c3e50;
+      --text-light: #546e7a;
+      --border-radius: 12px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .meta-info {
+      color: var(--text-light);
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Navegação por Itens */
+    .items-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .item-card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 3px solid transparent;
+      position: relative;
+    }
+
+    .item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .item-card.active {
+      border-color: var(--primary-color);
+      background: linear-gradient(135deg, #e8eaf6 0%, #f5f5f5 100%);
+    }
+
+    .item-card h3 {
+      color: var(--primary-color);
+      margin: 0 0 10px 0;
+      font-size: 1.3rem;
+    }
+
+    .item-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .item-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--accent-color);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* KPI Section */
+    .kpi-section {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .kpi-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 40px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 0 0 0 100%;
+    }
+
+    .hero-value {
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .hero-label {
+      font-size: 1.5rem;
+      font-weight: 600;
+      opacity: 0.9;
+      text-transform: uppercase;
+    }
+
+    .hero-desc {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      opacity: 0.8;
+      max-width: 80%;
+    }
+
+    .secondary-metrics {
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 5px solid var(--accent-color);
+    }
+
+    .metric-val {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .metric-lbl {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .summary-card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      font-size: 1.25rem;
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .context-text {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #444;
+    }
+
+    .root-causes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .cause-item {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .cause-pilar {
+      color: var(--accent-color);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .acc-item {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .acc-header {
+      padding: 20px 25px;
+      background: white;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .acc-header:hover {
+      background: #f8f9fa;
+    }
+
+    .acc-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .percent-badge {
+      background: var(--primary-color);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .acc-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      background: #fafafa;
+      border-top: 1px solid #eee;
+    }
+
+    .acc-body {
+      padding: 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .acc-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .analysis-box h4 {
+      color: var(--secondary-color);
+      margin-top: 0;
+      font-size: 1rem;
+    }
+
+    .recommendation-box {
+      background: #e8f5e9;
+      padding: 15px;
+      border-radius: 8px;
+      color: #1b5e20;
+      margin-top: 15px;
+    }
+
+    .examples-list {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: var(--primary-color);
+      color: white;
+      font-weight: 600;
+    }
+
+    .plan-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      background: #e3f2fd;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--primary-color);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <h1 id="page-title">Carregando...</h1>
+      <div class="meta-info">
+        <span id="total-casos"></span> Casos Analisados • <span id="analysis-date"></span>
+      </div>
+    </header>
+
+    <div class="summary-card">
+      <div class="section-header">📊 Selecione o Diagnóstico</div>
+      <div class="items-nav" id="items-nav"></div>
+    </div>
+
+    <div id="dynamic-content"></div>
+  </div>
+
+  <script>
+    const data = {
+      "meta": {
+        "titulo": "Diagnóstico Operacional de PDV - Análise de Interações",
+        "data_analise": "2023-12-08",
+        "total_casos": 2458
+      },
+      "itens": [
+        {
+          "id": "item-01",
+          "titulo": "Colapso nos Meios de Pagamento Digitais",
+          "descricao": "Falhas críticas em PIX e pagamento por aproximação (NFC) estão bloqueando vendas e gerando estornos.",
+          "badge": "Crítico",
+          "one_pager": {
+            "contexto": "A instabilidade generalizada nos métodos de pagamento digitais, principalmente PIX e NFC (aproximação), está causando perda direta de vendas, retrabalho operacional com estornos manuais e uma severa degradação da experiência do cliente no checkout. Clientes são cobrados sem a venda ser concluída, gerando desconfiança e sobrecarga no atendimento.",
+            "quantificacao": [
+              {
+                "metrica": "Vendas em Risco",
+                "valor": "Estimado 45%",
+                "descricao": "Percentual de transações que apresentam falha, lentidão ou exigem método alternativo, impactando diretamente a conversão."
+              },
+              {
+                "metrica": "Taxa de Falha em PIX",
+                "valor": "65%",
+                "descricao": "Transações PIX que resultam em 'pendente', 'negada' ou 'cancelada' após o cliente efetuar o pagamento."
+              },
+              {
+                "metrica": "Indisponibilidade de NFC",
+                "valor": "80%",
+                "descricao": "Relatos de falha na função de pagamento por aproximação (NFC) nos MobPins, forçando o uso do cartão físico."
+              }
+            ],
+            "causa_raiz_macro": [
+              {
+                "pilar": "Integração Financeira",
+                "descricao": "Instabilidade no gateway de pagamento (CITEF/MOZ), causando timeouts e status incorretos em transações PIX e TEF."
+              },
+              {
+                "pilar": "Configuração de Hardware",
+                "descricao": "Falha massiva na configuração dos terminais MobPin, desabilitando a funcionalidade de pagamento por aproximação (NFC) em diversas lojas."
+              }
+            ]
+          },
+          "detalhamento_casos": [
+            {
+              "categoria": "Transações PIX 'Fantasma' e Pendentes",
+              "percentual": "60%",
+              "resumo_problema": "Cliente é cobrado via PIX, mas a venda é cancelada ou fica pendente no PDV, exigindo estorno manual.",
+              "analise_tecnica": "A comunicação entre o PDV/MobShop e o gateway CITEF está intermitente. O PDV envia a requisição de pagamento, o cliente paga, mas a confirmação do gateway não retorna a tempo (timeout) ou retorna com status de erro, fazendo o PDV cancelar a venda localmente, enquanto a transação financeira foi concluída.",
+              "acao_imediata": "Sempre verificar o status da transação no portal CITESC Web antes de liberar o cliente. Se pendente, aprovar manualmente e finalizar a venda como 'POS'.",
+              "exemplos_reais": [
+                "sistema de pagamento PIX, que estava mostrando transações canceladas no PDB, mas que não estavam sendo estornadas para os clientes",
+                "pagamento realizado via PIX, onde a venda foi registrada como efetuada, mas não apareceu no sistema e foi cancelada sem estorno ao cliente",
+                "pagamentos via PIX na loja, onde as transações ficam pendentes e geram múltiplos QR Codes",
+                "falha no sistema de pagamento via PIX, que estava causando atrasos e pressão sobre os clientes"
+              ]
+            },
+            {
+              "categoria": "Falha Massiva no Pagamento por Aproximação (NFC)",
+              "percentual": "40%",
+              "resumo_problema": "Maquininhas MobPin não aceitam pagamento por aproximação, exibindo erros como 'cartão inválido' ou 'terminal não habilitado'.",
+              "analise_tecnica": "Uma falha de configuração em nível de sistema (TEF/adquirente) desabilitou a funcionalidade NFC para um grande número de terminais MobPin. O problema não é físico no aparelho, mas sim uma configuração cadastral que foi corrompida ou aplicada incorretamente em massa, sendo reportada desde Outubro.",
+              "acao_imediata": "Utilizar a inserção do cartão como método principal. Se o cliente só tiver o celular para pagamento, utilizar a maquininha POS como alternativa e lançar a venda manualmente no PDV.",
+              "exemplos_reais": [
+                "maquininha de cartão que não estava aceitando a aproximação",
+                "pagamento por aproximação no sistema Mobpin, onde o cartão de crédito não estava funcionando corretamente",
+                "MobPin não está funcionando por aproximação, apenas quando o cartão é inserido",
+                "problemas com a maquininha de pagamento, especificamente que o dispositivo MobPin não estava lendo os cartões por aproximação"
+              ]
+            }
+          ],
+          "plano_acao": {
+            "nome_projeto": "Operação Checkout Estável",
+            "objetivo": "Reduzir em 90% as falhas em pagamentos PIX e NFC, restaurando a confiança e a fluidez do checkout.",
+            "impacto": "Crítico (Recuperação de receita, redução de chargebacks e melhoria drástica na CEx).",
+            "esforco": "Alto (Envolve múltiplos times: TI PDV, Integrações Financeiras, Fornecedor do Gateway e Adquirente).",
+            "dependencias": "Gateway de Pagamento (CITEF/MOZ), Adquirente (MOIS), Time de Infraestrutura de Rede.",
+            "acoes": [
+              {
+                "passo": "Criar war room com CITEF/MOZ para monitoramento 24/7 das APIs de PIX e identificar gargalos.",
+                "responsavel": "TI - Integrações",
+                "prazo": "24h"
+              },
+              {
+                "passo": "Desenvolver um dashboard de saúde das transações PIX em tempo real para o suporte.",
+                "responsavel": "TI - PDV",
+                "prazo": "3 dias"
+              },
+              {
+                "passo": "Forçar a atualização de configuração em todos os MobPins da rede para reabilitar o NFC.",
+                "responsavel": "TI - Hardware",
+                "prazo": "1 semana"
+              },
+              {
+                "passo": "Comunicar massivamente os franqueados sobre os workarounds para PIX e NFC.",
+                "responsavel": "Comunicação CSF",
+                "prazo": "Imediato"
+              }
+            ]
+          }
+        },
+        {
+          "id": "item-02",
+          "titulo": "Paralisação da Operação Móvel",
+          "descricao": "Dispositivos MobShop e MobPin travando, perdendo conexão ou não ligando, impedindo vendas em mobilidade.",
+          "badge": "Bloqueante",
+          "one_pager": {
+            "contexto": "A operação de venda móvel está severamente comprometida por falhas de hardware e software nos dispositivos MobShop e MobPin. Aparelhos travam constantemente, perdem conexão com a rede Wi-Fi e com o servidor, ou simplesmente não ligam. Isso impede a abertura de caixa, o processamento de vendas e a consulta de produtos, gerando filas e frustração.",
+            "quantificacao": [
+              {
+                "metrica": "Taxa de Paralisação Móvel",
+                "valor": "Estimado 35%",
+                "descricao": "Percentual de atendimentos onde o MobShop/MobPin travou, desconectou ou precisou ser reiniciado para concluir a venda."
+              },
+              {
+                "metrica": "Falhas de Conectividade",
+                "valor": "55%",
+                "descricao": "Relatos de 'Sem conexão com o servidor', 'Falha na conexão da rede' ou problemas de pareamento Bluetooth com o MobPin."
+              },
+              {
+                "metrica": "Problemas de Hardware",
+                "valor": "20%",
+                "descricao": "Casos de aparelhos que não ligam, telas travadas ('ghost touch') ou com defeitos físicos que impedem o uso."
+              }
+            ],
+            "causa_raiz_macro": [
+              {
+                "pilar": "Infraestrutura/Rede",
+                "descricao": "Configuração incorreta de rede nos dispositivos, que tentam se conectar a redes Wi-Fi externas em vez da rede 'Bolt Mob Shop' dedicada, causando perda de comunicação com o servidor do PDV."
+              },
+              {
+                "pilar": "Software/OS",
+                "descricao": "Falta de um processo de reinicialização periódica e acúmulo de cache no sistema operacional dos MobShops, levando a travamentos e lentidão progressiva do aplicativo de vendas."
+              },
+              {
+                "pilar": "Hardware",
+                "descricao": "Fim da vida útil de alguns modelos de aparelhos e falhas físicas (bateria, tela, botões) que não são tratadas proativamente."
+              }
+            ]
+          },
+          "detalhamento_casos": [
+            {
+              "categoria": "Perda de Conexão com Servidor e Rede Wi-Fi",
+              "percentual": "60%",
+              "resumo_problema": "MobShop exibe 'Sem conexão com o servidor' ou 'Falha na conexão da rede', impedindo a finalização de vendas.",
+              "analise_tecnica": "Os dispositivos estão com múltiplas redes Wi-Fi salvas. O sistema operacional tenta se conectar à rede com sinal mais forte, que muitas vezes não é a rede corporativa 'Bolt Mob Shop'. Ao perder a conexão com a rede correta, o aplicativo não consegue se comunicar com o servidor do PDV local para processar a venda.",
+              "acao_imediata": "Acessar as configurações de Wi-Fi do MobShop, 'esquecer' todas as redes salvas e conectar-se manualmente apenas à rede 'Bolt Mob Shop'.",
+              "exemplos_reais": [
+                "problema de conectividade no seu Mobshop, que não estava funcionando desde o dia anterior e apresentava falha na conexão da rede",
+                "problema com o sistema de vendas, especificamente com a mensagem de erro de sem conexão ao servidor no sistema Bob Shop",
+                "MobShop não estava se conectando ao Wi-Fi",
+                "O franqueado entrou em contato com a Central de Soluções de Franquias para relatar problemas de conexão com o PDV, o que estava impactando as vendas em uma loja grande e lotada."
+              ]
+            },
+            {
+              "categoria": "Travamento e Lentidão do Aplicativo MobShop",
+              "percentual": "40%",
+              "resumo_problema": "Aplicativo de vendas congela, fecha sozinho ou fica extremamente lento, especialmente ao adicionar produtos ou finalizar a compra.",
+              "analise_tecnica": "A causa principal é a falta de reinicialização regular dos dispositivos, levando ao acúmulo de processos em segundo plano e cache excessivo. Isso consome a memória RAM e o poder de processamento do aparelho, resultando em instabilidade e lentidão do aplicativo de vendas.",
+              "acao_imediata": "Reiniciar o dispositivo MobShop diariamente, antes do início do turno. Se o problema persistir, acessar o aplicativo 'Hub' e realizar o procedimento de 'Reaplicar Perfil'.",
+              "exemplos_reais": [
+                "três celulares, que estavam travando e apresentando dificuldades ao acessar o sistema Mobshop",
+                "o sistema Linx Mobile, que estava fechando sozinho durante o processo de finalização de vendas",
+                "lentidão significativa no sistema da loja, o que estava quase levando ao cancelamento das vendas",
+                "O franqueado entrou em contato com a Central de Soluções de Franquias para relatar que seu MobPin estava travado e não respondia."
+              ]
+            }
+          ],
+          "plano_acao": {
+            "nome_projeto": "Missão Mobilidade Total",
+            "objetivo": "Garantir 99% de uptime e performance adequada dos dispositivos MobShop/MobPin em loja.",
+            "impacto": "Alto (Aumenta a capacidade de atendimento, melhora a experiência do cliente e reduz filas no caixa fixo).",
+            "esforco": "Médio (Requer scripts de automação, atualização de documentação e comunicação com a rede).",
+            "dependencias": "Time de Infraestrutura de TI, Time de Desenvolvimento do App MobShop.",
+            "acoes": [
+              {
+                "passo": "Desenvolver e distribuir um script que remove automaticamente redes Wi-Fi não autorizadas dos MobShops.",
+                "responsavel": "TI - Infraestrutura",
+                "prazo": "2 semanas"
+              },
+              {
+                "passo": "Implementar um lembrete de reinicialização diária no aplicativo MobShop.",
+                "responsavel": "TI - Desenvolvimento App",
+                "prazo": "1 semana"
+              },
+              {
+                "passo": "Criar um guia visual rápido ('Quick Guide') sobre como resolver problemas comuns de conexão e lentidão e distribuir para as lojas.",
+                "responsavel": "Comunicação CSF",
+                "prazo": "3 dias"
+              },
+              {
+                "passo": "Iniciar um programa de substituição proativa para modelos de MobShop próximos do fim da vida útil.",
+                "responsavel": "Operações de Franquia",
+                "prazo": "1 mês"
+              }
+            ]
+          }
+        },
+        {
+          "id": "item-03",
+          "titulo": "Inconsistências e Bugs Bloqueantes no PDV",
+          "descricao": "Erros de cálculo em promoções, divergência de preços e falhas no registro de vendas comprometem a operação.",
+          "badge": "Alto",
+          "one_pager": {
+            "contexto": "Falhas no software do PDV estão causando erros críticos que bloqueiam a finalização de vendas e geram inconsistências fiscais. Problemas incluem erros de cálculo em parcelamentos e descontos, produtos aparecendo sem preço, e vendas que não são registradas corretamente, exigindo intervenção manual e causando frustração para operadores e clientes.",
+            "quantificacao": [
+              {
+                "metrica": "Taxa de Vendas Bloqueadas",
+                "valor": "Estimado 20%",
+                "descricao": "Percentual de vendas que não puderam ser finalizadas devido a erros de sistema como 'soma das parcelas não coincide' ou 'produto sem preço'."
+              },
+              {
+                "metrica": "Divergência de Preços/Promoções",
+                "valor": "40%",
+                "descricao": "Relatos de produtos com preço zerado, descontos não aplicados ou divergência entre o preço no app e no PDV."
+              },
+              {
+                "metrica": "Falhas de Acesso e Permissão",
+                "valor": "25%",
+                "descricao": "Casos de usuários sem permissão para funções básicas (desconto, sangria) ou com problemas de login no PDV."
+              }
+            ],
+            "causa_raiz_macro": [
+              {
+                "pilar": "Software PDV",
+                "descricao": "Bug no módulo de cálculo do PDV Linx que causa erro de arredondamento em vendas parceladas ou com múltiplos descontos."
+              },
+              {
+                "pilar": "Sincronização de Dados",
+                "descricao": "Atraso ou falha na sincronização da base de dados de produtos e preços entre o sistema central (retaguarda) e os terminais de PDV, resultando em produtos sem preço."
+              },
+              {
+                "pilar": "Gestão de Acessos",
+                "descricao": "Processo de configuração de permissões de usuário é manual e propenso a erros, causando bloqueios indevidos para operadores e gerentes."
+              }
+            ]
+          },
+          "detalhamento_casos": [
+            {
+              "categoria": "Erro Fatal: 'Soma das parcelas não coincide'",
+              "percentual": "50%",
+              "resumo_problema": "PDV bloqueia a finalização da venda exibindo o erro 'A soma das parcelas não coincide com o total do atendimento'.",
+              "analise_tecnica": "Identificado um bug no sistema PDV Linx que, em cenários específicos de parcelamento combinados com descontos ou múltiplos itens, gera uma diferença de R$0,01 no cálculo final. Essa micro divergência impede a validação da transação e bloqueia o faturamento.",
+              "acao_imediata": "Cancelar o pedido e tentar faturar novamente. Se o erro persistir, abrir chamado para a equipe da Lynx realizar o ajuste manual no banco de dados do pedido.",
+              "exemplos_reais": [
+                "erro em um pedido, onde a soma das parcelas não coincidia com o total do acendimento",
+                "mensagem de erro que indicava que a soma das parcelas não coincidia",
+                "erro no faturamento de um pedido no PDV, onde a soma das parcelas não estava coincidindo com o total",
+                "A soma da parcela não coincide com o valor total"
+              ]
+            },
+            {
+              "categoria": "Produtos 'Fantasma' Sem Preço no PDV",
+              "percentual": "30%",
+              "resumo_problema": "Produtos recém-lançados ou em promoção são bipados no caixa mas aparecem com preço zerado, impedindo a venda.",
+              "analise_tecnica": "A falha ocorre por um atraso na sincronização das tabelas de preço entre o sistema de retaguarda (onde o preço está correto) e o banco de dados local do PDV. A 'carga' de atualização de produtos não está sendo concluída ou executada a tempo.",
+              "acao_imediata": "No sistema MobShop ou PDV, forçar uma 'nova carga' de tabelas. Se não resolver, é preciso aguardar a sincronização automática, que pode levar algumas horas.",
+              "exemplos_reais": [
+                "produto recém-lançado estava aparecendo como sem preço no sistema",
+                "um produto que estava apresentando preços zerados no PDV",
+                "produto estava sem preço no sistema de retaguarda",
+                "o sistema Linx Mobile estava apresentando problemas ao passar produtos, indicando que aparecia a mensagem de que o produto estava sem preço"
+              ]
+            },
+            {
+              "categoria": "Falhas de Permissão de Usuário",
+              "percentual": "20%",
+              "resumo_problema": "Operadores e gerentes não conseguem executar funções essenciais como aplicar descontos, cancelar vendas ou fazer sangria.",
+              "analise_tecnica": "As permissões de usuário não estão sendo sincronizadas corretamente entre o sistema de Retaguarda GB e o PDV local. Alterações de cargo ou cadastro de novos usuários não replicam as permissões necessárias, resultando em mensagens de 'acesso não autorizado' ou 'função não permitida'.",
+              "acao_imediata": "Solicitar ao escritório ou ao usuário com perfil de administrador que acesse o Retaguarda GB, verifique o grupo de permissões do usuário e force uma nova carga de dados para o PDV.",
+              "exemplos_reais": [
+                "não conseguia realizar a sangria, recebendo uma mensagem de que o usuário não era permitido",
+                "desconto de fidelidade no PDV não estava funcionando corretamente, apresentando uma mensagem de função não permitida",
+                "não conseguia aplicar o desconto manual devido a uma restrição no ID dela"
+              ]
+            }
+          ],
+          "plano_acao": {
+            "nome_projeto": "PDV à Prova de Falhas",
+            "objetivo": "Eliminar bugs bloqueantes de cálculo e garantir 100% de consistência de dados e permissões entre retaguarda e PDV.",
+            "impacto": "Alto (Reduz o tempo de atendimento, evita perda de vendas e garante conformidade fiscal e de preços).",
+            "esforco": "Alto (Exige correção de bugs pela Lynx e revisão dos processos de sincronização de dados).",
+            "dependencias": "Fornecedor do Software (Lynx), Time de TI - Retaguarda, Time de Cadastro de Produtos.",
+            "acoes": [
+              {
+                "passo": "Escalar o bug de cálculo de parcelas com a Lynx como 'Crítico - Bloqueador de Vendas' e exigir um hotfix.",
+                "responsavel": "Gestão de Fornecedores de TI",
+                "prazo": "1 semana"
+              },
+              {
+                "passo": "Automatizar e aumentar a frequência do processo de sincronização de preços e permissões para cada 30 minutos.",
+                "responsavel": "TI - Retaguarda",
+                "prazo": "2 semanas"
+              },
+              {
+                "passo": "Criar um alerta no PDV para o operador quando um produto for escaneado sem preço, com instrução para forçar nova carga.",
+                "responsavel": "TI - PDV",
+                "prazo": "1 mês"
+              },
+              {
+                "passo": "Revisar e simplificar o fluxo de permissões de usuário, automatizando liberações padrão para novos colaboradores.",
+                "responsavel": "TI - Segurança da Informação",
+                "prazo": "1 mês"
+              }
+            ]
+          }
+        }
+      ]
+    }
+
+
+
+    let currentItemIndex = 0;
+
+    function renderDashboard(report) {
+      if (!report || !report.meta) return;
+
+      document.getElementById('page-title').textContent = report.meta.titulo;
+      document.getElementById('total-casos').textContent = report.meta.total_casos;
+      document.getElementById('analysis-date').textContent = report.meta.data_analise || new Date().toLocaleDateString();
+
+      const navContainer = document.getElementById('items-nav');
+      navContainer.innerHTML = '';
+
+      report.itens.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = `item-card ${index === 0 ? 'active' : ''}`;
+        card.onclick = () => switchItem(index);
+        card.innerHTML = `
+                    <span class="item-badge">${item.badge}</span>
+                    <h3>${item.titulo}</h3>
+                    <p>${item.descricao}</p>
+                `;
+        navContainer.appendChild(card);
+      });
+
+      renderItemContent(report.itens[0], 0);
+    }
+
+    function switchItem(index) {
+      currentItemIndex = index;
+
+      document.querySelectorAll('.item-card').forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+      });
+
+      renderItemContent(data.itens[index], index);
+    }
+
+    function renderItemContent(item, index) {
+      const contentContainer = document.getElementById('dynamic-content');
+
+      let kpiHTML = '<div class="kpi-section">';
+
+      if (item.one_pager.quantificacao.length > 0) {
+        const hero = item.one_pager.quantificacao[0];
+        kpiHTML += `
+                    <div class="hero-card">
+                        <span class="hero-label">${hero.metrica}</span>
+                        <span class="hero-value">${hero.valor}</span>
+                        <span class="hero-desc">${hero.descricao}</span>
+                    </div>
+                `;
+
+        kpiHTML += '<div class="secondary-metrics">';
+        for (let i = 1; i < item.one_pager.quantificacao.length; i++) {
+          kpiHTML += `
+                        <div class="metric-card">
+                            <span class="metric-val">${item.one_pager.quantificacao[i].valor}</span>
+                            <span class="metric-lbl">${item.one_pager.quantificacao[i].metrica}</span>
+                            <small style="color: #777; margin-top: 5px;">${item.one_pager.quantificacao[i].descricao}</small>
+                        </div>
+                    `;
+        }
+        kpiHTML += '</div>';
+      }
+      kpiHTML += '</div>';
+
+      let causesHTML = '';
+      item.one_pager.causa_raiz_macro.forEach(cause => {
+        causesHTML += `
+                    <div class="cause-item">
+                        <span class="cause-pilar">${cause.pilar}</span>
+                        ${cause.descricao}
+                    </div>
+                `;
+      });
+
+      let accordionHTML = '';
+      item.detalhamento_casos.forEach((caso) => {
+        const examples = caso.exemplos_reais.map(ex => `<li>"${ex}"</li>`).join('');
+        accordionHTML += `
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <div class="acc-title">
+                                <span class="percent-badge">${caso.percentual}</span>
+                                ${caso.categoria}
+                            </div>
+                            <span>▼</span>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-body">
+                                <div class="analysis-box">
+                                    <h4>Análise Técnica & Contexto</h4>
+                                    <p>${caso.resumo_problema}</p>
+                                    <p><strong>Causa Raiz Específica:</strong> ${caso.analise_tecnica}</p>
+                                    
+                                    <div class="recommendation-box">
+                                        <strong>💡 Ação Imediata / Workaround:</strong><br>
+                                        ${caso.acao_imediata}
+                                    </div>
+                                </div>
+                                <div class="examples-box">
+                                    <h4>Exemplos Reais (Logs)</h4>
+                                    <ul class="examples-list" style="list-style-type: none; padding: 0;">
+                                        ${examples}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+      });
+
+      let actionsHTML = '';
+      item.plano_acao.acoes.forEach(acao => {
+        actionsHTML += `
+                    <tr>
+                        <td>${acao.passo}</td>
+                        <td>${acao.responsavel}</td>
+                        <td>${acao.prazo}</td>
+                    </tr>
+                `;
+      });
+
+      contentContainer.innerHTML = `
+                ${kpiHTML}
+
+                <div class="summary-card">
+                    <div class="section-header">📋 Diagnóstico Executivo</div>
+                    <p class="context-text">${item.one_pager.contexto}</p>
+
+                    <div class="section-header" style="font-size: 1.1rem; margin-top: 30px;">🔍 Causas Raiz Macro</div>
+                    <div class="root-causes-grid">
+                        ${causesHTML}
+                    </div>
+                </div>
+
+                <h2 class="section-header">📉 Detalhamento dos Principais Agravantes</h2>
+                <p style="margin-bottom: 20px; color: #666;">Clique nas categorias abaixo para expandir a análise técnica, recomendações e exemplos reais.</p>
+
+                <div class="accordion">
+                    ${accordionHTML}
+                </div>
+
+                <div class="summary-card">
+                    <div class="section-header">🚀 Plano de Ação Estratégico</div>
+
+                    <div class="plan-meta">
+                        <div class="meta-item"><strong>Projeto</strong> <span>${item.plano_acao.nome_projeto}</span></div>
+                        <div class="meta-item"><strong>Objetivo</strong> <span>${item.plano_acao.objetivo}</span></div>
+                        <div class="meta-item"><strong>Esforço</strong> <span>${item.plano_acao.esforco}</span></div>
+                        <div class="meta-item"><strong>Dependências</strong> <span>${item.plano_acao.dependencias || 'N/A'}</span></div>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ação</th>
+                                    <th>Responsável</th>
+                                    <th>Prazo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${actionsHTML}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+
+      setTimeout(() => {
+        const firstHeader = contentContainer.querySelector('.acc-header');
+        if (firstHeader) toggleAcc(firstHeader);
+      }, 100);
+    }
+
+    function toggleAcc(el) {
+      const content = el.nextElementSibling;
+
+      document.querySelectorAll('.acc-content').forEach(div => {
+        if (div !== content) {
+          div.style.maxHeight = null;
+          div.previousElementSibling.querySelector('span:last-child').textContent = '▼';
+        }
+      });
+
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        el.querySelector('span:last-child').textContent = '▼';
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        el.querySelector('span:last-child').textContent = '▲';
+      }
+    }
+
+    if (data && data.itens && data.itens.length > 0) {
+      renderDashboard(data);
+    }
+  </script>
+
+</body>
+
+</html>
