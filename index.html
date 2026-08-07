@@ -1,258 +1,1190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Nurse Flow - Gestão Inteligente de Escalas em Saúde. Mais que cobrir plantões, nós estruturamos e garantimos a segurança da sua operação assistencial.">
-    <meta name="keywords" content="gestão de escalas, saúde, enfermagem, controle, previsibilidade, home care, hospital, clínicas, ILPI">
-    <meta name="author" content="Nurse Flow">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0B4286">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#edf0ef" />
+    <title>Estudo de reorganização do estacionamento — Champs Elysees</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --page: #edf0ef;
+        --surface: #ffffff;
+        --surface-subtle: #f6f7f6;
+        --ink: #17231d;
+        --ink-soft: #526059;
+        --line: #cfd6d2;
+        --line-strong: #8d9992;
+        --navy: #172832;
+        --navy-soft: #263b47;
+        --accent: #32715a;
+        --accent-soft: #dbe9e1;
+        --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+      }
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nurseflow.com.br/">
-    <meta property="og:title" content="Nurse Flow - Gestão Inteligente de Escalas">
-    <meta property="og:description" content="Mais controle e previsibilidade. Estruturamos operações complexas em saúde, reduzindo faltas e garantindo a segurança clínica.">
-    <meta property="og:image" content="assets/logo.png">
+      * {
+        box-sizing: border-box;
+      }
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://nurseflow.com.br/">
-    <meta property="twitter:title" content="Nurse Flow - Gestão Inteligente de Escalas">
-    <meta property="twitter:description" content="Estruturamos operações e entregamos estabilidade de escala, foco exclusivo na segurança da assistência à saúde.">
-    <meta property="twitter:image" content="assets/logo.png">
+      html,
+      body {
+        min-width: 320px;
+        min-height: 100%;
+      }
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/logo.png">
-    <link rel="apple-touch-icon" href="assets/logo.png">
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--page);
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
 
-    <title>Nurse Flow - Gestão Inteligente de Escalas em Saúde</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+      body.is-locked {
+        overflow: hidden;
+      }
 
-    <!-- Header Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <img src="assets/logo.png" alt="Nurse Flow Logo" style="height: 40px; margin-right: 8px;">
-                    <span class="logo-nurse">NURSE</span>
-                    <span class="logo-flow">FLOW</span>
-                </a>
-                
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#diferenciais">Diferenciais</a></li>
-                    <li><a href="#download">APP</a></li>
-                    <li><a href="#contato" class="btn btn-primary" style="color:white; padding: 0.5rem 1rem;">Fale Conosco</a></li>
-                </ul>
-            </nav>
+      .is-locked .site-content {
+        display: none;
+      }
+
+      .access-gate {
+        display: grid;
+        min-height: 100vh;
+        padding: 24px;
+        place-items: center;
+        background: #e8ecea;
+      }
+
+      body:not(.is-locked) .access-gate {
+        display: none;
+      }
+
+      .access-panel {
+        width: min(100%, 430px);
+        overflow: hidden;
+        border-radius: 12px;
+        color: var(--ink);
+        background: var(--surface);
+        box-shadow: 0 3px 8px rgb(26 41 33 / 11%);
+      }
+
+      .access-panel-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 22px 26px;
+        color: #fff;
+        background: var(--navy);
+      }
+
+      .access-panel-header .monogram {
+        color: var(--navy);
+        background: #fff;
+      }
+
+      .access-property {
+        margin: 0 0 2px;
+        font-size: 0.76rem;
+        font-weight: 780;
+      }
+
+      .access-document {
+        margin: 0;
+        color: #bfcbd0;
+        font-size: 0.74rem;
+      }
+
+      .access-panel-body {
+        padding: 30px 28px 28px;
+      }
+
+      .access-panel h1 {
+        margin: 0;
+        font-size: 1.65rem;
+        font-weight: 690;
+        letter-spacing: -0.035em;
+      }
+
+      .access-intro {
+        margin: 10px 0 24px;
+        color: var(--ink-soft);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .access-form label {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 0.8rem;
+        font-weight: 720;
+      }
+
+      .access-form input {
+        width: 100%;
+        height: 48px;
+        padding: 0 13px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        color: var(--ink);
+        background: #fff;
+        font: inherit;
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+      }
+
+      .access-form input:focus {
+        border-color: #427699;
+        outline: none;
+        box-shadow: 0 0 0 3px rgb(66 118 153 / 18%);
+      }
+
+      .access-form input[aria-invalid="true"] {
+        border-color: #a94843;
+      }
+
+      .access-error {
+        min-height: 32px;
+        margin: 7px 0 0;
+        color: #963d38;
+        font-size: 0.77rem;
+        line-height: 1.35;
+      }
+
+      .access-submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 48px;
+        border: 0;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--accent);
+        cursor: pointer;
+        font-weight: 760;
+        transition: background 160ms ease, transform 100ms ease;
+      }
+
+      .access-submit:hover {
+        background: #285f4b;
+      }
+
+      .access-submit:active {
+        transform: scale(0.985);
+      }
+
+      .access-submit:disabled {
+        cursor: wait;
+        opacity: 0.7;
+      }
+
+      .access-note {
+        margin: 18px 0 0;
+        color: #718078;
+        font-size: 0.72rem;
+        line-height: 1.45;
+        text-align: center;
+      }
+
+      button,
+      a {
+        font: inherit;
+      }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #4b91bd;
+        outline-offset: 3px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: 76px;
+        padding: 14px max(22px, calc((100vw - 1560px) / 2));
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      .identity {
+        display: flex;
+        align-items: center;
+        gap: 17px;
+        min-width: 0;
+      }
+
+      .monogram {
+        display: grid;
+        flex: 0 0 auto;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--navy);
+        font-size: 0.83rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .property {
+        margin: 0 0 3px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .document-name {
+        overflow: hidden;
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 0.91rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .document-status {
+        color: var(--ink-soft);
+        font-size: 0.78rem;
+        white-space: nowrap;
+      }
+
+      .download-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 40px;
+        padding: 0 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        color: var(--ink);
+        background: var(--surface);
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: border-color 160ms ease, background 160ms ease;
+      }
+
+      .download-link:hover {
+        border-color: var(--ink);
+        background: var(--surface-subtle);
+      }
+
+      .download-link svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+      }
+
+      .page {
+        width: min(1560px, calc(100% - 32px));
+        margin: 22px auto 30px;
+      }
+
+      .scenario-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 14px;
+      }
+
+      .scenario-nav h1 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 720;
+        letter-spacing: -0.015em;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 4px;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #e3e7e5;
+      }
+
+      .tab {
+        position: relative;
+        min-height: 42px;
+        padding: 0 22px;
+        border: 0;
+        border-radius: 7px;
+        color: #4d5b54;
+        background: transparent;
+        cursor: pointer;
+        font-size: 0.86rem;
+        font-weight: 700;
+        transition: color 160ms ease, background 160ms ease, transform 100ms ease;
+      }
+
+      .tab:hover {
+        color: var(--ink);
+        background: rgb(255 255 255 / 58%);
+      }
+
+      .tab:active {
+        transform: scale(0.98);
+      }
+
+      .tab[aria-selected="true"] {
+        color: #fff;
+        background: var(--navy);
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: 286px minmax(0, 1fr);
+        overflow: hidden;
+        min-height: min(790px, calc(100vh - 142px));
+        border-radius: 12px;
+        background: var(--surface);
+        box-shadow: 0 3px 8px rgb(26 41 33 / 9%);
+      }
+
+      .briefing {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 26px 24px;
+        color: #fff;
+        background: var(--navy);
+      }
+
+      .scenario-position {
+        margin: 0 0 28px;
+        color: #adbbc2;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .scenario-position strong {
+        color: #fff;
+        font-size: 1rem;
+      }
+
+      .scenario-title {
+        max-width: 11ch;
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 650;
+        letter-spacing: -0.035em;
+        line-height: 1.04;
+        text-wrap: balance;
+      }
+
+      .scenario-description {
+        margin: 15px 0 0;
+        color: #c8d1d5;
+        font-size: 0.92rem;
+        line-height: 1.55;
+        text-wrap: pretty;
+      }
+
+      .metrics {
+        margin: 30px 0 0;
+        border-top: 1px solid #40515b;
+        border-bottom: 1px solid #40515b;
+      }
+
+      .metric {
+        padding: 17px 0 16px;
+      }
+
+      .metric-value {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 1.45rem;
+        font-weight: 720;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .metric-label {
+        color: #adbbc2;
+        font-size: 0.72rem;
+        line-height: 1.25;
+      }
+
+      .legend {
+        display: grid;
+        gap: 10px;
+        margin: 28px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .legend li {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: #d6dddf;
+        font-size: 0.79rem;
+      }
+
+      .swatch {
+        flex: 0 0 auto;
+        width: 14px;
+        height: 10px;
+        border-radius: 2px;
+      }
+
+      .swatch-car { border: 1px solid #8fa89a; background: #dcebe0; }
+      .swatch-motorcycle { border: 1px solid #7d9caf; background: #d9e8f2; }
+      .swatch-circulation { border: 1px solid #aaa79e; background: #f1efe9; }
+      .swatch-column { background: #111b16; }
+
+      .briefing-note {
+        margin: auto 0 0;
+        padding-top: 26px;
+        color: #91a1a9;
+        font-size: 0.7rem;
+        line-height: 1.45;
+      }
+
+      .plan-panel {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        background: var(--surface);
+      }
+
+      .plan-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 54px;
+        padding: 0 20px;
+        border-bottom: 1px solid var(--line);
+        color: var(--ink-soft);
+        background: var(--surface-subtle);
+        font-size: 0.76rem;
+      }
+
+      .plan-toolbar strong {
+        color: var(--ink);
+        font-size: 0.8rem;
+      }
+
+      .motion-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        white-space: nowrap;
+      }
+
+      .motion-status::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        content: "";
+        transition: transform 180ms ease;
+      }
+
+      .motion-status.is-moving::before {
+        animation: status-pulse 700ms ease-in-out infinite alternate;
+      }
+
+      @keyframes status-pulse {
+        to { transform: scale(1.75); }
+      }
+
+      .drawing-area {
+        display: grid;
+        min-height: 0;
+        flex: 1;
+        place-items: center;
+        padding: clamp(12px, 1.8vw, 26px);
+      }
+
+      .plan-frame {
+        position: relative;
+        width: auto;
+        max-width: 100%;
+        height: clamp(520px, calc(100vh - 285px), 760px);
+        aspect-ratio: 3469.5527587257 / 3089.8207336475;
+      }
+
+      #planSvg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        shape-rendering: geometricPrecision;
+      }
+
+      .plan-element {
+        opacity: 1;
+      }
+
+      .plan-element .shape {
+        vector-effect: non-scaling-stroke;
+      }
+
+      .role-car .shape {
+        fill: #dcebe0;
+        stroke: #70887a;
+        stroke-width: 1.05;
+      }
+
+      .role-motorcycle .shape {
+        fill: #d9e8f2;
+        stroke: #66899f;
+        stroke-width: 1.05;
+      }
+
+      .role-circulation .shape {
+        fill: #f1efe9;
+        stroke: none;
+      }
+
+      .role-column .shape {
+        fill: #17211c;
+        stroke: none;
+      }
+
+      .role-structure .shape {
+        fill: #e6e9e7;
+        stroke: #7d8982;
+        stroke-width: 1.1;
+      }
+
+      .role-core .shape {
+        fill: #fbfcfb;
+        stroke: #5d6c63;
+        stroke-width: 1.15;
+      }
+
+      .role-attention .shape {
+        fill: #99423d;
+        stroke: #7d342f;
+        stroke-width: 1;
+      }
+
+      .role-label .shape,
+      .role-outline .shape {
+        fill: none;
+        stroke: #88938c;
+        stroke-width: 1;
+      }
+
+      .element-text {
+        fill: #24312a;
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+        pointer-events: none;
+      }
+
+      .role-attention .element-text {
+        fill: #8b332e;
+        font-weight: 780;
+        letter-spacing: 0.025em;
+      }
+
+      .access-label .element-text {
+        fill: #ffffff;
+        font-weight: 820;
+        letter-spacing: 0.045em;
+      }
+
+      .new-vacancy-label .element-text {
+        fill: #1e5a43;
+      }
+
+      .entry-indicator path {
+        fill: none;
+        stroke: #355d73;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3.2;
+        vector-effect: non-scaling-stroke;
+      }
+
+      .entry-indicator text {
+        fill: #294656;
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 42px;
+        font-weight: 780;
+        letter-spacing: 0.035em;
+        text-anchor: middle;
+      }
+
+      .loading-label {
+        position: absolute;
+        inset: 50% auto auto 50%;
+        color: var(--ink-soft);
+        font-size: 0.82rem;
+        transform: translate(-50%, -50%);
+      }
+
+      @media (max-width: 900px) {
+        .topbar {
+          padding-inline: 16px;
+        }
+
+        .document-status {
+          display: none;
+        }
+
+        .page {
+          width: min(100% - 20px, 1560px);
+          margin-top: 12px;
+        }
+
+        .scenario-nav {
+          align-items: stretch;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .tabs {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .tab {
+          padding-inline: 8px;
+        }
+
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .briefing {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          gap: 10px 24px;
+          padding: 22px;
+        }
+
+        .scenario-position,
+        .scenario-title,
+        .scenario-description {
+          grid-column: 1;
+        }
+
+        .scenario-position {
+          margin-bottom: 4px;
+        }
+
+        .scenario-title {
+          max-width: none;
+          font-size: 1.6rem;
+        }
+
+        .metrics {
+          grid-column: 2;
+          grid-row: 1 / 4;
+          align-self: center;
+          margin: 0;
+        }
+
+        .legend,
+        .briefing-note {
+          display: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .topbar {
+          min-height: 66px;
+        }
+
+        .monogram {
+          width: 38px;
+          height: 38px;
+        }
+
+        .document-name,
+        .download-link span {
+          display: none;
+        }
+
+        .download-link {
+          width: 40px;
+          padding: 0;
+          justify-content: center;
+        }
+
+        .scenario-nav h1 {
+          font-size: 1rem;
+        }
+
+        .tab {
+          min-height: 48px;
+          font-size: 0.78rem;
+        }
+
+        .briefing {
+          grid-template-columns: 1fr;
+        }
+
+        .metrics {
+          grid-column: 1;
+          grid-row: auto;
+        }
+
+        .plan-toolbar {
+          padding-inline: 12px;
+        }
+
+        .plan-frame {
+          width: 100%;
+          height: auto;
+        }
+
+        .plan-toolbar > span:first-child {
+          display: none;
+        }
+
+        .drawing-area {
+          padding: 8px 2px 16px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="is-locked">
+    <section class="access-gate" id="accessGate" aria-labelledby="accessTitle">
+      <div class="access-panel">
+        <div class="access-panel-header">
+          <div class="monogram" aria-hidden="true">CE</div>
+          <div>
+            <p class="access-property">Condomínio Champs Elysees</p>
+            <p class="access-document">Estudo de reorganização do estacionamento</p>
+          </div>
         </div>
+        <div class="access-panel-body">
+          <h1 id="accessTitle">Acesso à apresentação</h1>
+          <p class="access-intro">Informe a senha para visualizar o comparativo das propostas.</p>
+          <form class="access-form" id="accessForm">
+            <label for="accessPassword">Senha</label>
+            <input
+              id="accessPassword"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              aria-describedby="accessError"
+              autofocus
+              required
+            />
+            <p class="access-error" id="accessError" aria-live="polite"></p>
+            <button class="access-submit" id="accessSubmit" type="submit">Acessar apresentação</button>
+          </form>
+          <p class="access-note">Conteúdo reservado para discussão do condomínio.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="site-content" id="siteContent" aria-hidden="true">
+    <header class="topbar">
+      <div class="identity">
+        <div class="monogram" aria-hidden="true">CE</div>
+        <div>
+          <p class="property">Condomínio Champs Elysees</p>
+          <p class="document-name">Estudo de reorganização do estacionamento</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span class="document-status">Estudo preliminar · sem escala</span>
+        <a class="download-link" href="assets/vagas.excalidraw" download>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 20h14" />
+          </svg>
+          <span>Arquivo editável</span>
+        </a>
+      </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container reveal">
-            <div class="hero-content">
-                <h1>Gestão Inteligente de <span class="gradient-text">Escalas em Saúde</span></h1>
-                <p class="lead">Controle, previsibilidade e segurança assistencial.</p>
-                
-                <ul class="hero-features">
-                    <li><i class="fas fa-check-circle"></i> Gestão ativa da escala</li>
-                    <li><i class="fas fa-check-circle"></i> Monitoramento em tempo real</li>
-                    <li><i class="fas fa-check-circle"></i> Cobertura rápida de faltas</li>
-                </ul>
-                
-                <div class="hero-cta" style="margin-top: 2rem;">
-                    <a href="#sobre" class="btn btn-primary">Conheça a Nurse Flow <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-                </div>
-            </div>
-            <!-- In a production build, an absolute image could be here, or background image handles it. -->
+    <main class="page">
+      <nav class="scenario-nav" aria-label="Cenários do estudo">
+        <h1>Comparativo de implantação</h1>
+        <div class="tabs" role="tablist" aria-label="Escolha um cenário">
+          <button class="tab" id="tab-atual" role="tab" aria-selected="true" data-index="0">Situação atual</button>
+          <button class="tab" id="tab-proposta-1" role="tab" aria-selected="false" data-index="1">Proposta 1</button>
+          <button class="tab" id="tab-proposta-2" role="tab" aria-selected="false" data-index="2">Proposta 2</button>
         </div>
-    </section>
+      </nav>
 
-    <!-- Problema Section -->
-    <section id="sobre" class="sobre">
-        <div class="container reveal">
-            <h2 style="font-size: 2.2rem; text-transform: uppercase;">Escala mal gerida é risco assistencial</h2>
-            <p style="text-align: center; font-size: 1.25rem; font-weight: 600; margin-bottom: 3rem; color: var(--primary-blue);">Principais dores da operação</p>
-            <div class="sobre-grid">
-                <div class="sobre-img-container">
-                    <img src="assets/sobre-img.png" alt="Profissionais de Enfermagem">
-                </div>
-                <div class="sobre-content">
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="font-size: 1.15rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-times-circle" style="color: #ef4444;"></i> Falta de profissionais em plantões críticos</li>
-                        <li style="font-size: 1.15rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-times-circle" style="color: #ef4444;"></i> Absenteísmo sem controle</li>
-                        <li style="font-size: 1.15rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-times-circle" style="color: #ef4444;"></i> Desorganização operacional</li>
-                        <li style="font-size: 1.15rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-times-circle" style="color: #ef4444;"></i> Sobrecarga da equipe</li>
-                        <li style="font-size: 1.15rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px; color: #b91c1c; font-weight: bold;"><i class="fas fa-exclamation-triangle"></i> Risco clínico elevado</li>
-                    </ul>
-                    <div style="margin-top: 2.5rem; padding: 1.5rem; background: var(--bg-section); border-left: 4px solid var(--primary-blue); border-radius: 8px;">
-                        <p style="margin: 0; font-weight: 700; font-size: 1.2rem; color: var(--dark-text); text-transform: uppercase;">Quem controla a escala, controla a operação</p>
-                    </div>
-                </div>
+      <section class="workspace" aria-label="Planta comparativa do estacionamento">
+        <aside class="briefing" aria-live="polite">
+          <p class="scenario-position"><strong id="scenarioNumber">01</strong> / 03</p>
+          <h2 class="scenario-title" id="scenarioTitle">Situação atual</h2>
+          <p class="scenario-description" id="scenarioDescription">
+            Configuração de referência conforme o levantamento atual.
+          </p>
+
+          <div class="metrics" aria-label="Quantidade de vagas representadas">
+            <div class="metric">
+              <strong class="metric-value" id="motorcycleCount">5</strong>
+              <span class="metric-label">vagas de moto representadas</span>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- Serviços Section -->
-    <section id="servicos">
-        <div class="container reveal">
-            <h2>Solução Nurse Flow</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto; margin-bottom: 3rem;">Atuamos de forma estratégica para garantir o controle da sua operação.</p>
-            
-            <div class="servicos-grid">
-                <div class="servico-card reveal">
-                    <div class="servico-icon"><i class="fas fa-calendar-check"></i></div>
-                    <h3>Gestão ativa da escala</h3>
-                    <p style="font-size: 1rem; color: var(--light-text);">Gerenciamento proativo (não passivo) com foco em antever necessidades e garantir a cobertura ideal.</p>
-                </div>
-                
-                <div class="servico-card reveal" style="transition-delay: 0.1s;">
-                    <div class="servico-icon" style="color: var(--primary-green);"><i class="fas fa-desktop"></i></div>
-                    <h3>Monitoramento em tempo real</h3>
-                    <p style="font-size: 1rem; color: var(--light-text);">Visibilidade completa da operação, acompanhamento de presença e gestão de intercorrências instantânea.</p>
-                </div>
-                
-                <div class="servico-card reveal" style="transition-delay: 0.2s;">
-                    <div class="servico-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>Cobertura rápida de faltas</h3>
-                    <p style="font-size: 1rem; color: var(--light-text);">Ação imediata contra o absenteísmo, acionando substitutos ágeis para manter a operação segura.</p>
-                </div>
-                
-                <div class="servico-card reveal" style="transition-delay: 0.3s;">
-                    <div class="servico-icon" style="color: var(--primary-green);"><i class="fas fa-sitemap"></i></div>
-                    <h3>Estruturação e Previsibilidade</h3>
-                    <p style="font-size: 1rem; color: var(--light-text);">Processos bem definidos que entregam controle absoluto sobre a escala e previsibilidade da operação.</p>
-                </div>
+          <ul class="legend" aria-label="Legenda da planta">
+            <li><span class="swatch swatch-car"></span>Vaga de carro</li>
+            <li><span class="swatch swatch-motorcycle"></span>Vaga de moto</li>
+            <li><span class="swatch swatch-circulation"></span>Circulação e hall</li>
+            <li><span class="swatch swatch-column"></span>Coluna estrutural</li>
+          </ul>
+
+          <p class="briefing-note">
+            Representação esquemática para discussão em assembleia. O estudo não substitui levantamento técnico ou projeto executivo.
+          </p>
+        </aside>
+
+        <div class="plan-panel" role="tabpanel" id="planPanel" aria-labelledby="tab-atual" tabindex="0">
+          <div class="plan-toolbar">
+            <span><strong>Planta esquemática</strong> · circulação e distribuição de vagas</span>
+            <span class="motion-status" id="motionStatus">Cenário aplicado</span>
+          </div>
+          <div class="drawing-area">
+            <div class="plan-frame">
+              <span class="loading-label" id="loadingLabel">Preparando planta…</span>
+              <svg id="planSvg" role="img" aria-labelledby="planTitle planDescription"></svg>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
+    </main>
+    </div>
 
-    <!-- Diferenciais -->
-    <section id="diferenciais" class="bg-section">
-        <div class="container reveal">
-            <h2>Resultados Entregues</h2>
-            <div class="diferenciais-container">
-                <div class="diferencial-badge"><i class="fas fa-chart-line"></i> Redução de falhas assistenciais</div>
-                <div class="diferencial-badge"><i class="fas fa-balance-scale"></i> Maior estabilidade de escala</div>
-                <div class="diferencial-badge"><i class="fas fa-piggy-bank"></i> Redução de custos ocultos</div>
-                <div class="diferencial-badge"><i class="fas fa-shield-alt"></i> Segurança assistencial</div>
-                <div class="diferencial-badge"><i class="fas fa-cog"></i> Eficiência operacional</div>
-            </div>
-        </div>
-    </section>
+    <script>
+      const ACCESS_HASH = "9886c2e491a34de550ddd9deb519fabe76bd41ee1df0d68f8e700a1124892adc";
+      const ACCESS_SESSION_KEY = "champs-presentation-access";
+      const accessGate = document.querySelector("#accessGate");
+      const siteContent = document.querySelector("#siteContent");
+      const accessForm = document.querySelector("#accessForm");
+      const accessPassword = document.querySelector("#accessPassword");
+      const accessError = document.querySelector("#accessError");
+      const accessSubmit = document.querySelector("#accessSubmit");
 
-    <!-- Para Quem É -->
-    <section id="para-quem-e">
-        <div class="container reveal">
-            <h2>Para Quem É</h2>
-            <div class="para-quem-grid">
-                <div class="target-card">
-                    <div class="target-icon"><i class="fas fa-house-medical"></i></div>
-                    <h3 style="font-size: 1.2rem;">Home Care</h3>
-                </div>
-                <div class="target-card">
-                    <div class="target-icon"><i class="fas fa-hospital"></i></div>
-                    <h3 style="font-size: 1.2rem;">Hospitais</h3>
-                </div>
-                <div class="target-card">
-                    <div class="target-icon"><i class="fas fa-clinic-medical"></i></div>
-                    <h3 style="font-size: 1.2rem;">Clínicas</h3>
-                </div>
-                <div class="target-card">
-                    <div class="target-icon"><i class="fas fa-building"></i></div>
-                    <h3 style="font-size: 1.2rem;">Operadoras de Saúde</h3>
-                </div>
-                <div class="target-card">
-                    <div class="target-icon"><i class="fas fa-wheelchair"></i></div>
-                    <h3 style="font-size: 1.2rem;">ILPIs</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+      function unlockPresentation() {
+        document.body.classList.remove("is-locked");
+        accessGate.setAttribute("aria-hidden", "true");
+        siteContent.setAttribute("aria-hidden", "false");
+      }
 
-    <!-- Download App Section -->
-    <section id="download" class="download-section">
-        <div class="container reveal">
-            <div class="download-container">
-                <div class="download-content">
-                    <h2>Baixe o Nurse App</h2>
-                    <p>Tenha o controle das suas escalas na palma da mão. Disponível para Android e iOS.</p>
-                    <div class="app-buttons">
-                        <a href="https://play.google.com/store/apps/details?id=com.coalize" target="_blank" class="app-btn android">
-                            <i class="fab fa-google-play"></i>
-                            <span>
-                                <small>Disponível no</small>
-                                <strong>Google Play</strong>
-                            </span>
-                        </a>
-                        <a href="https://apps.apple.com/br/app/nurse-app/id6744336814" target="_blank" class="app-btn apple">
-                            <i class="fab fa-apple"></i>
-                            <span>
-                                <small>Baixar na</small>
-                                <strong>App Store</strong>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      async function hashValue(value) {
+        const bytes = new TextEncoder().encode(value);
+        const digest = await crypto.subtle.digest("SHA-256", bytes);
+        return [...new Uint8Array(digest)]
+          .map((byte) => byte.toString(16).padStart(2, "0"))
+          .join("");
+      }
 
-    <!-- Diferencial Estrategico -->
-    <section id="estrategia" style="background-color: var(--bg-section);">
-        <div class="container reveal">
-            <h2 style="font-size: 2.5rem; text-transform: uppercase;">Não preenchemos plantões.<br><span class="gradient-text">Estruturamos operações.</span></h2>
-            <p style="text-align: center; max-width: 800px; margin: 2rem auto; color: var(--dark-text); font-size: 1.35rem; font-weight: 500;">Enquanto o mercado trata escala como rotina passiva, nós a tratamos como o coração da segurança assistencial e eficiência operacional.</p>
-        </div>
-    </section>
+      if (sessionStorage.getItem(ACCESS_SESSION_KEY) === "granted") {
+        unlockPresentation();
+      }
 
-    <!-- Footer / CTA -->
-    <footer id="contato">
-        <div class="container reveal">
-            <div class="cta-content">
-                <h3 style="color: var(--primary-green); font-weight: 700; margin-bottom: 1rem; font-size: 1.5rem; text-transform: uppercase;">Sua escala hoje te dá controle ou problema?</h3>
-                <h2>Vamos estruturar sua operação?</h2>
-                <p>Fale com a Nurse Flow e descubra como podemos assumir o controle da sua escala com máxima qualidade e segurança assistencial.</p>
-                <div class="footer-cta-btns">
-                    <a href="https://wa.me/5511949275731" target="_blank" class="btn btn-cta whatsapp">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="mailto:gestaoestrategica@nurseflow.com.br" class="btn btn-cta email">
-                        <i class="fas fa-envelope"></i> Enviar E-mail
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Nurse Flow. Todos os direitos reservados. Transformando a gestão na saúde.</p>
-            </div>
-        </div>
-    </footer>
+      accessForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        accessSubmit.disabled = true;
+        accessSubmit.textContent = "Verificando…";
+        accessError.textContent = "";
+        accessPassword.setAttribute("aria-invalid", "false");
 
-    <!-- Custom JS -->
-    <script src="js/script.js"></script>
-</body>
+        const submittedHash = await hashValue(accessPassword.value.trim());
+        if (submittedHash === ACCESS_HASH) {
+          sessionStorage.setItem(ACCESS_SESSION_KEY, "granted");
+          unlockPresentation();
+          return;
+        }
+
+        accessPassword.value = "";
+        accessPassword.setAttribute("aria-invalid", "true");
+        accessError.textContent = "Senha incorreta. Tente novamente.";
+        accessSubmit.disabled = false;
+        accessSubmit.textContent = "Acessar apresentação";
+        accessPassword.focus();
+      });
+    </script>
+
+    <script src="assets/motion-layout.js"></script>
+    <script>
+      const SVG_NS = "http://www.w3.org/2000/svg";
+      const scenarios = [
+        {
+          name: "Situação atual",
+          description: "Configuração de referência conforme o levantamento atual."
+        },
+        {
+          name: "Proposta 1",
+          description: "Alternativa com acesso superior e redistribuição das vagas de motos."
+        },
+        {
+          name: "Proposta 2",
+          description: "Alternativa com as vagas de motos realocadas para o eixo central."
+        }
+      ];
+
+      const layout = window.PLAN_LAYOUT;
+      const svg = document.querySelector("#planSvg");
+      const tabs = [...document.querySelectorAll(".tab")];
+      const planPanel = document.querySelector("#planPanel");
+      const scenarioNumber = document.querySelector("#scenarioNumber");
+      const scenarioTitle = document.querySelector("#scenarioTitle");
+      const scenarioDescription = document.querySelector("#scenarioDescription");
+      const motorcycleCount = document.querySelector("#motorcycleCount");
+      const motionStatus = document.querySelector("#motionStatus");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      svg.setAttribute("viewBox", `-45 -45 ${layout.width + 90} ${layout.height + 90}`);
+      svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+
+      const titleNode = document.createElementNS(SVG_NS, "title");
+      titleNode.id = "planTitle";
+      titleNode.textContent = "Planta do estacionamento — situação atual";
+      svg.append(titleNode);
+
+      const descriptionNode = document.createElementNS(SVG_NS, "desc");
+      descriptionNode.id = "planDescription";
+      descriptionNode.textContent = "Representação das vagas de carros, motos, colunas, elevadores, escadas e áreas de circulação.";
+      svg.append(descriptionNode);
+
+      function firstVisibleState(track) {
+        return track.states.find((state) => state.opacity > 0) || track.states[0];
+      }
+
+      function radiusFor(role) {
+        if (role === "column") return 3;
+        if (role === "car" || role === "motorcycle") return 10;
+        if (role === "circulation") return 5;
+        return 12;
+      }
+
+      const legacyArrowTrackIds = new Set(["base-122", "base-123", "base-124"]);
+
+      const renderedTracks = layout.tracks.map((track) => {
+        const reference = firstVisibleState(track);
+        const group = document.createElementNS(SVG_NS, "g");
+        group.classList.add("plan-element", `role-${track.role}`);
+        group.dataset.trackId = track.id;
+        group.setAttribute("aria-hidden", "true");
+        if (legacyArrowTrackIds.has(track.id)) group.style.display = "none";
+        if (track.text === "ACESSO") group.classList.add("access-label");
+        if (track.text === "NOVA VAGA") group.classList.add("new-vacancy-label");
+
+        if (track.kind === "text") {
+          const text = document.createElementNS(SVG_NS, "text");
+          const lines = track.text.split("\n");
+          const fontSize = track.text === "ACESSO"
+            ? Math.max(track.fontSize || 36, 42)
+            : track.fontSize || 36;
+          const lineHeight = fontSize * 1.16;
+          text.classList.add("element-text");
+          text.setAttribute("text-anchor", "middle");
+          text.setAttribute("font-size", fontSize);
+          text.setAttribute("y", String(-((lines.length - 1) * lineHeight) / 2));
+          lines.forEach((line, index) => {
+            const span = document.createElementNS(SVG_NS, "tspan");
+            span.setAttribute("x", "0");
+            if (index > 0) span.setAttribute("dy", String(lineHeight));
+            span.textContent = line;
+            text.append(span);
+          });
+          group.append(text);
+        } else if (track.kind === "diamond") {
+          const polygon = document.createElementNS(SVG_NS, "polygon");
+          polygon.classList.add("shape");
+          polygon.setAttribute(
+            "points",
+            `0,${-reference.height / 2} ${reference.width / 2},0 0,${reference.height / 2} ${-reference.width / 2},0`,
+          );
+          group.append(polygon);
+        } else {
+          const rect = document.createElementNS(SVG_NS, "rect");
+          rect.classList.add("shape");
+          rect.setAttribute("x", String(-reference.width / 2));
+          rect.setAttribute("y", String(-reference.height / 2));
+          rect.setAttribute("width", String(reference.width));
+          rect.setAttribute("height", String(reference.height));
+          rect.setAttribute("rx", String(radiusFor(track.role)));
+          group.append(rect);
+        }
+
+        svg.append(group);
+        return {
+          track,
+          group,
+          baseWidth: Math.max(reference.width, 1),
+          baseHeight: Math.max(reference.height, 1),
+        };
+      });
+
+      const entryIndicator = document.createElementNS(SVG_NS, "g");
+      entryIndicator.classList.add("entry-indicator");
+      entryIndicator.setAttribute("aria-hidden", "true");
+
+      const entryLabel = document.createElementNS(SVG_NS, "text");
+      entryLabel.setAttribute("x", "545");
+      entryLabel.setAttribute("y", "2622");
+      entryLabel.textContent = "ENTRADA / SAÍDA";
+      entryIndicator.append(entryLabel);
+
+      const entryArrow = document.createElementNS(SVG_NS, "path");
+      entryArrow.setAttribute("d", "M545 2662V3008M478 2941L545 3008L612 2941");
+      entryIndicator.append(entryArrow);
+      svg.append(entryIndicator);
+
+      document.querySelector("#loadingLabel").remove();
+
+      let currentIndex = 0;
+      let animationFrame = 0;
+      let animationGeneration = 0;
+      let currentValues = layout.tracks.map((track) => ({ ...track.states[0] }));
+
+      function renderTrack(rendered, state) {
+        const centerX = state.x + state.width / 2;
+        const centerY = state.y + state.height / 2;
+        const scaleX = state.width / rendered.baseWidth;
+        const scaleY = state.height / rendered.baseHeight;
+        const angle = state.angle * 180 / Math.PI;
+        rendered.group.setAttribute(
+          "transform",
+          `translate(${centerX} ${centerY}) rotate(${angle}) scale(${scaleX} ${scaleY})`,
+        );
+        rendered.group.style.opacity = String(state.opacity);
+      }
+
+      function shortestAngle(from, to) {
+        let difference = (to - from) % (Math.PI * 2);
+        if (difference > Math.PI) difference -= Math.PI * 2;
+        if (difference < -Math.PI) difference += Math.PI * 2;
+        return from + difference;
+      }
+
+      function interpolate(from, to, progress) {
+        const targetAngle = shortestAngle(from.angle, to.angle);
+        return {
+          x: from.x + (to.x - from.x) * progress,
+          y: from.y + (to.y - from.y) * progress,
+          width: from.width + (to.width - from.width) * progress,
+          height: from.height + (to.height - from.height) * progress,
+          angle: from.angle + (targetAngle - from.angle) * progress,
+          opacity: from.opacity + (to.opacity - from.opacity) * progress,
+        };
+      }
+
+      function easeOutQuint(progress) {
+        return 1 - Math.pow(1 - progress, 5);
+      }
+
+      function statesDiffer(left, right) {
+        return Math.abs(left.x - right.x) > 0.5
+          || Math.abs(left.y - right.y) > 0.5
+          || Math.abs(left.width - right.width) > 0.5
+          || Math.abs(left.height - right.height) > 0.5
+          || Math.abs(left.angle - right.angle) > 0.005
+          || Math.abs(left.opacity - right.opacity) > 0.01;
+      }
+
+      function updateInterface(index) {
+        const scenario = scenarios[index];
+        const counts = layout.counts[index];
+        tabs.forEach((tab, tabIndex) => {
+          const selected = tabIndex === index;
+          tab.setAttribute("aria-selected", String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+        });
+        planPanel.setAttribute("aria-labelledby", tabs[index].id);
+        scenarioNumber.textContent = String(index + 1).padStart(2, "0");
+        scenarioTitle.textContent = scenario.name;
+        scenarioDescription.textContent = scenario.description;
+        motorcycleCount.textContent = counts.motorcycles;
+        titleNode.textContent = `Planta do estacionamento — ${scenario.name.toLowerCase()}`;
+      }
+
+      function selectScenario(index) {
+        if (index === currentIndex && !animationFrame) return;
+
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+        animationGeneration += 1;
+        const generation = animationGeneration;
+        const fromValues = currentValues.map((state) => ({ ...state }));
+        const targetValues = layout.tracks.map((track) => track.states[index]);
+        const moving = targetValues.map((target, trackIndex) => statesDiffer(fromValues[trackIndex], target));
+
+        currentIndex = index;
+        updateInterface(index);
+
+        if (reducedMotion.matches || !moving.some(Boolean)) {
+          currentValues = targetValues.map((state) => ({ ...state }));
+          renderedTracks.forEach((rendered, trackIndex) => renderTrack(rendered, currentValues[trackIndex]));
+          motionStatus.textContent = "Cenário aplicado";
+          motionStatus.classList.remove("is-moving");
+          return;
+        }
+
+        motionStatus.textContent = "Reposicionando elementos";
+        motionStatus.classList.add("is-moving");
+        const start = performance.now();
+        const duration = 1450;
+
+        function frame(now) {
+          if (generation !== animationGeneration) return;
+          const rawProgress = Math.min(1, (now - start) / duration);
+          const progress = easeOutQuint(rawProgress);
+
+          currentValues = targetValues.map((target, trackIndex) => {
+            if (!moving[trackIndex]) return { ...target };
+            return interpolate(fromValues[trackIndex], target, progress);
+          });
+          renderedTracks.forEach((rendered, trackIndex) => renderTrack(rendered, currentValues[trackIndex]));
+
+          if (rawProgress < 1) {
+            animationFrame = window.requestAnimationFrame(frame);
+          } else {
+            animationFrame = 0;
+            motionStatus.textContent = "Cenário aplicado";
+            motionStatus.classList.remove("is-moving");
+          }
+        }
+
+        animationFrame = window.requestAnimationFrame(frame);
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => selectScenario(index));
+        tab.addEventListener("keydown", (event) => {
+          if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+          event.preventDefault();
+          let nextIndex = index;
+          if (event.key === "ArrowLeft") nextIndex = (index + tabs.length - 1) % tabs.length;
+          if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+          if (event.key === "Home") nextIndex = 0;
+          if (event.key === "End") nextIndex = tabs.length - 1;
+          selectScenario(nextIndex);
+          tabs[nextIndex].focus();
+        });
+      });
+
+      renderedTracks.forEach((rendered, index) => renderTrack(rendered, currentValues[index]));
+      updateInterface(0);
+    </script>
+  </body>
 </html>

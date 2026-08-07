@@ -1,0 +1,31 @@
+{
+  "width": 3469.5527587256825,
+  "height": 3089.820733647469,
+  "minY": -858.974845616559,
+  "scenarios": [
+    {
+      "id": "atual",
+      "label": "Situação atual",
+      "minX": -46.07925571502119,
+      "maxX": 3423.4735030106613,
+      "file": "assets/atual.svg",
+      "elementCount": 125
+    },
+    {
+      "id": "proposta-1",
+      "label": "Proposta 1",
+      "minX": 4252.662349621356,
+      "maxX": 7722.215108347039,
+      "file": "assets/proposta-1.svg",
+      "elementCount": 137
+    },
+    {
+      "id": "proposta-2",
+      "label": "Proposta 2",
+      "minX": 8551.403954957734,
+      "maxX": 12020.956713683416,
+      "file": "assets/proposta-2.svg",
+      "elementCount": 134
+    }
+  ]
+}
